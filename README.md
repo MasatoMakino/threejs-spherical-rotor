@@ -1,2 +1,3 @@
 # threejs-spherical-rotor
-Loop rotation manager for threejs-spherical-controls.
+
+Loop rotation plugin for threejs-spherical-controls.
