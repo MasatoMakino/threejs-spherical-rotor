@@ -99,14 +99,31 @@ export class SphericalRotor {
    * カメラの自動回転を停止する
    */
   public stopRotation = () => {
+    this.stop();
+  };
+
+  /**
+   * カメラの回転を一時停止する。
+   * @param [option]　option.returnR = falseの時、アニメーションを行わない。
+   */
+  public stop(option?: RotorStopConfig): void {
     if (!this.isRotation) return;
+    this.isRotation = false;
 
     if (this.rotateTimerID) {
       clearInterval(this.rotateTimerID);
       this.rotateTimerID = null;
     }
     this.cameraController.tweens.stop();
-    if (this._config && this._config.defaultR != null) {
+
+    option = SphericalRotor.getDefaultStopParam(option);
+
+    if (
+      this._config &&
+      this._config.defaultR != null &&
+      option &&
+      option.returnR === true
+    ) {
       this.cameraController.movePosition(
         SphericalParamType.R,
         this._config.defaultR,
@@ -115,9 +132,13 @@ export class SphericalRotor {
         }
       );
     }
+  }
 
-    this.isRotation = false;
-  };
+  public static getDefaultStopParam(option: RotorStopConfig): RotorStopConfig {
+    if (option == null) option = {};
+    if (option.returnR == null) option.returnR = true;
+    return option;
+  }
 }
 
 /**
@@ -126,6 +147,7 @@ export class SphericalRotor {
  */
 export class AutoSphericalRotor extends SphericalRotor {
   private sleepWatcher: SleepWatcher;
+  private isStart: boolean = false;
   public static readonly DEFAULT_LOOP_LAT_DURATION: number = 30 * 1000;
   public static readonly DEFAULT_LOOP_R_DURATION: number = 30 * 1000;
 
@@ -138,9 +160,20 @@ export class AutoSphericalRotor extends SphericalRotor {
   }
 
   /**
-   * マウスの監視を停止する
+   * マウスの監視を一時停止する
+   * @param [option]　option.returnR =　falseの時のみ、アニメーションを行わず原位置でマウス監視が停止する。監視を停止させた後に別のアニメーションでカメラを移動したかったり、元に戻したかったりする場合に使う。
    */
-  public stop(): void {
+  public pause(option?: RotorStopConfig): void {
+    if (!this.isStart) return;
+    this.isStart = false;
+
+    option = SphericalRotor.getDefaultStopParam(option);
+
+    this.stopWatcher();
+    this.stop(option);
+  }
+
+  private stopWatcher(): void {
     this.sleepWatcher.removeEventListener(
       SleepEventType.SLEEP,
       this.startRotation
@@ -150,15 +183,30 @@ export class AutoSphericalRotor extends SphericalRotor {
       this.stopRotation
     );
     this.sleepWatcher.stop();
-    this.stopRotation();
   }
 
   /**
-   * マウスの監視を開始する
+   * マウスの監視を再開する。
+   * 各種設定はstart()で指定されたオプションを引き継ぐ。
+   * pause()関数で停止された監視を再開させるための関数。
+   */
+  public resume(): void {
+    if (this.isStart) return;
+    this.isStart = true;
+    this.startWatcher();
+  }
+
+  /**
+   * マウスの監視を開始する。
    */
   public start(parameters?: SphericalRotorConfig): void {
     this.config = parameters;
+    this.isStart = true;
+    this.startWatcher();
+  }
 
+  private startWatcher(): void {
+    this.stopWatcher();
     this.sleepWatcher.addEventListener(
       SleepEventType.SLEEP,
       this.startRotation
@@ -186,4 +234,8 @@ export interface SphericalRotorConfig {
   minR?: number; //ズーム範囲　単位はワールド座標の距離
   defaultR?: number; //ズーム範囲　ズームループ解除時にこの距離に戻る
   loopRDuration?: number; //ズームの速度 maxからminまでの経過時間　単位ms
+}
+
+export interface RotorStopConfig {
+  returnR?: boolean; //停止時にカメラ半径をSphericalRotorConfig.defaultRに戻すか否か。 デフォルトでtrue
 }

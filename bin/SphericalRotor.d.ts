@@ -18,6 +18,12 @@ export declare class SphericalRotor {
      * カメラの自動回転を停止する
      */
     stopRotation: () => void;
+    /**
+     * カメラの回転を一時停止する。
+     * @param [option]　option.returnR = falseの時、アニメーションを行わない。
+     */
+    stop(option?: RotorStopConfig): void;
+    static getDefaultStopParam(option: RotorStopConfig): RotorStopConfig;
 }
 /**
  * マウス操作を監視し、回転を制御するクラス。
@@ -25,17 +31,27 @@ export declare class SphericalRotor {
  */
 export declare class AutoSphericalRotor extends SphericalRotor {
     private sleepWatcher;
+    private isStart;
     static readonly DEFAULT_LOOP_LAT_DURATION: number;
     static readonly DEFAULT_LOOP_R_DURATION: number;
     constructor(sleepWatcher: SleepWatcher, cameraController: SphericalController);
     /**
-     * マウスの監視を停止する
+     * マウスの監視を一時停止する
+     * @param [option]　option.returnR =　falseの時のみ、アニメーションを行わず原位置でマウス監視が停止する。監視を停止させた後に別のアニメーションでカメラを移動したかったり、元に戻したかったりする場合に使う。
      */
-    stop(): void;
+    pause(option?: RotorStopConfig): void;
+    private stopWatcher;
     /**
-     * マウスの監視を開始する
+     * マウスの監視を再開する。
+     * 各種設定はstart()で指定されたオプションを引き継ぐ。
+     * pause()関数で停止された監視を再開させるための関数。
+     */
+    resume(): void;
+    /**
+     * マウスの監視を開始する。
      */
     start(parameters?: SphericalRotorConfig): void;
+    private startWatcher;
 }
 /**
  * 回転の動作を指定する。
@@ -52,5 +68,8 @@ export interface SphericalRotorConfig {
     minR?: number;
     defaultR?: number;
     loopRDuration?: number;
+}
+export interface RotorStopConfig {
+    returnR?: boolean;
 }
 //# sourceMappingURL=SphericalRotor.d.ts.map

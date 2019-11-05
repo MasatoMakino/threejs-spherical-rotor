@@ -101,6 +101,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="autosphericalrotor.html#_config" class="tsd-kind-icon">_config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="autosphericalrotor.html#isstart" class="tsd-kind-icon">is<wbr>Start</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="autosphericalrotor.html#sleepwatcher" class="tsd-kind-icon">sleep<wbr>Watcher</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="autosphericalrotor.html#default_loop_lat_duration" class="tsd-kind-icon">DEFAULT_<wbr>LOOP_<wbr>LAT_<wbr>DURATION</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="autosphericalrotor.html#default_loop_r_duration" class="tsd-kind-icon">DEFAULT_<wbr>LOOP_<wbr><wbr>R_DURATION</a></li>
@@ -115,11 +116,16 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="autosphericalrotor.html#pause" class="tsd-kind-icon">pause</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="autosphericalrotor.html#resume" class="tsd-kind-icon">resume</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="autosphericalrotor.html#rotatetheta" class="tsd-kind-icon">rotate<wbr>Theta</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="autosphericalrotor.html#start" class="tsd-kind-icon">start</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="autosphericalrotor.html#startrotation" class="tsd-kind-icon">start<wbr>Rotation</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="autosphericalrotor.html#stop" class="tsd-kind-icon">stop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="autosphericalrotor.html#startwatcher" class="tsd-kind-icon">start<wbr>Watcher</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="autosphericalrotor.html#stop" class="tsd-kind-icon">stop</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="autosphericalrotor.html#stoprotation" class="tsd-kind-icon">stop<wbr>Rotation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="autosphericalrotor.html#stopwatcher" class="tsd-kind-icon">stop<wbr>Watcher</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="autosphericalrotor.html#getdefaultstopparam" class="tsd-kind-icon">get<wbr>Default<wbr>Stop<wbr>Param</a></li>
 							</ul>
 						</section>
 					</div>
@@ -138,7 +144,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="sphericalrotor.html">SphericalRotor</a>.<a href="sphericalrotor.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L130">SphericalRotor.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L152">SphericalRotor.ts:152</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -164,7 +170,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="sphericalrotor.html">SphericalRotor</a>.<a href="sphericalrotor.html#_config">_config</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L9">SphericalRotor.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L9">SphericalRotor.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="isstart" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> is<wbr>Start</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L150">SphericalRotor.ts:150</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -174,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">sleep<wbr>Watcher<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SleepWatcher</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L128">SphericalRotor.ts:128</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L149">SphericalRotor.ts:149</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -184,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOOP_<wbr>LAT_<wbr>DURATION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30 * 1000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L129">SphericalRotor.ts:129</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L151">SphericalRotor.ts:151</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -194,7 +210,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOOP_<wbr><wbr>R_DURATION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;30 * 1000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L130">SphericalRotor.ts:130</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L152">SphericalRotor.ts:152</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -212,7 +228,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="sphericalrotor.html">SphericalRotor</a>.<a href="sphericalrotor.html#config">config</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L20">SphericalRotor.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L20">SphericalRotor.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -228,6 +244,58 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="pause" class="tsd-anchor"></a>
+					<h3>pause</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">pause<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">?: </span><a href="../interfaces/rotorstopconfig.html" class="tsd-signature-type">RotorStopConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L166">SphericalRotor.ts:166</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>マウスの監視を一時停止する</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> option: <a href="../interfaces/rotorstopconfig.html" class="tsd-signature-type">RotorStopConfig</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="resume" class="tsd-anchor"></a>
+					<h3>resume</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">resume<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L193">SphericalRotor.ts:193</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>マウスの監視を再開する。
+										各種設定はstart()で指定されたオプションを引き継ぐ。
+									pause()関数で停止された監視を再開させるための関数。</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="rotatetheta" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> rotate<wbr>Theta</h3>
@@ -239,7 +307,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="sphericalrotor.html">SphericalRotor</a>.<a href="sphericalrotor.html#rotatetheta">rotateTheta</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L90">SphericalRotor.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L90">SphericalRotor.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -262,12 +330,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L159">SphericalRotor.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L202">SphericalRotor.ts:202</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>マウスの監視を開始する</p>
+									<p>マウスの監視を開始する。</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -291,31 +359,55 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="sphericalrotor.html">SphericalRotor</a>.<a href="sphericalrotor.html#startrotation">startRotation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L37">SphericalRotor.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L37">SphericalRotor.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="stop" class="tsd-anchor"></a>
-					<h3>stop</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">stop<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="startwatcher" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> start<wbr>Watcher</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">start<wbr>Watcher<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L143">SphericalRotor.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L208">SphericalRotor.ts:208</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="stop" class="tsd-anchor"></a>
+					<h3>stop</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">stop<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">?: </span><a href="../interfaces/rotorstopconfig.html" class="tsd-signature-type">RotorStopConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="sphericalrotor.html">SphericalRotor</a>.<a href="sphericalrotor.html#stop">stop</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L109">SphericalRotor.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>マウスの監視を停止する</p>
+									<p>カメラの回転を一時停止する。</p>
 								</div>
 							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> option: <a href="../interfaces/rotorstopconfig.html" class="tsd-signature-type">RotorStopConfig</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -331,7 +423,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="sphericalrotor.html">SphericalRotor</a>.<a href="sphericalrotor.html#stoprotation">stopRotation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/48d4765/src/SphericalRotor.ts#L101">SphericalRotor.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L101">SphericalRotor.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -340,6 +432,47 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="stopwatcher" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> stop<wbr>Watcher</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">stop<wbr>Watcher<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L176">SphericalRotor.ts:176</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="getdefaultstopparam" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Default<wbr>Stop<wbr>Param</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Default<wbr>Stop<wbr>Param<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">: </span><a href="../interfaces/rotorstopconfig.html" class="tsd-signature-type">RotorStopConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/rotorstopconfig.html" class="tsd-signature-type">RotorStopConfig</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="sphericalrotor.html">SphericalRotor</a>.<a href="sphericalrotor.html#getdefaultstopparam">getDefaultStopParam</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/threejs-spherical-rotor/blob/5c5cf6c/src/SphericalRotor.ts#L137">SphericalRotor.ts:137</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>option: <a href="../interfaces/rotorstopconfig.html" class="tsd-signature-type">RotorStopConfig</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/rotorstopconfig.html" class="tsd-signature-type">RotorStopConfig</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -367,6 +500,9 @@
 								<a href="autosphericalrotor.html#_config" class="tsd-kind-icon">_config</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="autosphericalrotor.html#isstart" class="tsd-kind-icon">is<wbr>Start</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="autosphericalrotor.html#sleepwatcher" class="tsd-kind-icon">sleep<wbr>Watcher</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
@@ -378,6 +514,12 @@
 							<li class=" tsd-kind-set-signature tsd-parent-kind-class tsd-is-inherited">
 								<a href="autosphericalrotor.html#config" class="tsd-kind-icon">config</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="autosphericalrotor.html#pause" class="tsd-kind-icon">pause</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="autosphericalrotor.html#resume" class="tsd-kind-icon">resume</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="autosphericalrotor.html#rotatetheta" class="tsd-kind-icon">rotate<wbr>Theta</a>
 							</li>
@@ -387,11 +529,20 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="autosphericalrotor.html#startrotation" class="tsd-kind-icon">start<wbr>Rotation</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="autosphericalrotor.html#startwatcher" class="tsd-kind-icon">start<wbr>Watcher</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="autosphericalrotor.html#stop" class="tsd-kind-icon">stop</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="autosphericalrotor.html#stoprotation" class="tsd-kind-icon">stop<wbr>Rotation</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="autosphericalrotor.html#stopwatcher" class="tsd-kind-icon">stop<wbr>Watcher</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="autosphericalrotor.html#getdefaultstopparam" class="tsd-kind-icon">get<wbr>Default<wbr>Stop<wbr>Param</a>
 							</li>
 						</ul>
 					</li>
@@ -399,6 +550,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="sphericalrotor.html" class="tsd-kind-icon">Spherical<wbr>Rotor</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/rotorstopconfig.html" class="tsd-kind-icon">Rotor<wbr>Stop<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/sphericalrotorconfig.html" class="tsd-kind-icon">Spherical<wbr>Rotor<wbr>Config</a>

@@ -44,19 +44,7 @@ export class SphericalRotor {
          * カメラの自動回転を停止する
          */
         this.stopRotation = () => {
-            if (!this.isRotation)
-                return;
-            if (this.rotateTimerID) {
-                clearInterval(this.rotateTimerID);
-                this.rotateTimerID = null;
-            }
-            this.cameraController.tweens.stop();
-            if (this._config && this._config.defaultR != null) {
-                this.cameraController.movePosition(SphericalParamType.R, this._config.defaultR, {
-                    duration: 333
-                });
-            }
-            this.isRotation = false;
+            this.stop();
         };
         this.cameraController = cameraController;
     }
@@ -76,6 +64,36 @@ export class SphericalRotor {
         }
         this._config = parameters;
     }
+    /**
+     * カメラの回転を一時停止する。
+     * @param [option]　option.returnR = falseの時、アニメーションを行わない。
+     */
+    stop(option) {
+        if (!this.isRotation)
+            return;
+        this.isRotation = false;
+        if (this.rotateTimerID) {
+            clearInterval(this.rotateTimerID);
+            this.rotateTimerID = null;
+        }
+        this.cameraController.tweens.stop();
+        option = SphericalRotor.getDefaultStopParam(option);
+        if (this._config &&
+            this._config.defaultR != null &&
+            option &&
+            option.returnR === true) {
+            this.cameraController.movePosition(SphericalParamType.R, this._config.defaultR, {
+                duration: 333
+            });
+        }
+    }
+    static getDefaultStopParam(option) {
+        if (option == null)
+            option = {};
+        if (option.returnR == null)
+            option.returnR = true;
+        return option;
+    }
 }
 SphericalRotor.ROTATE_INTERVAL = 38;
 /**
@@ -85,22 +103,47 @@ SphericalRotor.ROTATE_INTERVAL = 38;
 export class AutoSphericalRotor extends SphericalRotor {
     constructor(sleepWatcher, cameraController) {
         super(cameraController);
+        this.isStart = false;
         this.sleepWatcher = sleepWatcher;
     }
     /**
-     * マウスの監視を停止する
+     * マウスの監視を一時停止する
+     * @param [option]　option.returnR =　falseの時のみ、アニメーションを行わず原位置でマウス監視が停止する。監視を停止させた後に別のアニメーションでカメラを移動したかったり、元に戻したかったりする場合に使う。
      */
-    stop() {
+    pause(option) {
+        if (!this.isStart)
+            return;
+        this.isStart = false;
+        option = SphericalRotor.getDefaultStopParam(option);
+        this.stopWatcher();
+        this.stop(option);
+    }
+    stopWatcher() {
         this.sleepWatcher.removeEventListener(SleepEventType.SLEEP, this.startRotation);
         this.sleepWatcher.removeEventListener(SleepEventType.WAKEUP, this.stopRotation);
         this.sleepWatcher.stop();
-        this.stopRotation();
     }
     /**
-     * マウスの監視を開始する
+     * マウスの監視を再開する。
+     * 各種設定はstart()で指定されたオプションを引き継ぐ。
+     * pause()関数で停止された監視を再開させるための関数。
+     */
+    resume() {
+        if (this.isStart)
+            return;
+        this.isStart = true;
+        this.startWatcher();
+    }
+    /**
+     * マウスの監視を開始する。
      */
     start(parameters) {
         this.config = parameters;
+        this.isStart = true;
+        this.startWatcher();
+    }
+    startWatcher() {
+        this.stopWatcher();
         this.sleepWatcher.addEventListener(SleepEventType.SLEEP, this.startRotation);
         this.sleepWatcher.addEventListener(SleepEventType.WAKEUP, this.stopRotation);
         this.sleepWatcher.start();
