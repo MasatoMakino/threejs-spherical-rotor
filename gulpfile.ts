@@ -1,25 +1,19 @@
-const { dest, series, src } = require("gulp");
+const { series } = require("gulp");
 
 const doc = require("gulptask-tsdoc").get();
 const server = require("gulptask-dev-server").get("./docs/demo");
 
-const copyGlob = "./demoSrc/**/*.{html,png,jpg,jpeg}";
-const copy = () => {
-  return src(copyGlob, { base: "./demoSrc/" }).pipe(dest("./docs/demo"));
-};
-
-const { bundleDevelopment, watchBundle } = require("gulptask-webpack")(
-  "./webpack.config.js"
-);
+const { bundleDemo, watchDemo } = require("gulptask-demo-page").get({
+  externalScripts: ["//code.createjs.com/1.0.0/tweenjs.min.js"],
+  body: ` <canvas id="webgl-canvas" width="640" height="480"></canvas>`
+});
 const { tsc, tscClean, watchTsc } = require("gulptask-tsc").get();
 
-const watchTasks = cb => {
-  watchBundle();
+const watchTasks = async () => {
+  watchDemo();
   watchTsc();
-  copy();
-  cb();
 };
 
 exports.start_dev = series(watchTasks, server);
-exports.build = series(tsc, copy, bundleDevelopment, doc);
-exports.build_clean = series(tscClean, copy, bundleDevelopment, doc);
+exports.build = series(tsc, bundleDemo, doc);
+exports.build_clean = series(tscClean, bundleDemo, doc);
