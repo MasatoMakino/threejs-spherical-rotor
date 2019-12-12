@@ -7,7 +7,7 @@ export declare class SphericalRotor {
     private rotateTimerID;
     private static readonly ROTATE_INTERVAL;
     constructor(cameraController: SphericalController);
-    config: SphericalRotorConfig;
+    set config(parameters: SphericalRotorConfig);
     startRotation: () => void;
     /**
      * カメラを横回転させる
