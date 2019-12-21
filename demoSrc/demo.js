@@ -1,5 +1,5 @@
 import { Common } from "./Common";
-import { ThreeTicker, ThreeTickerEventType } from "threejs-ticker";
+import { RAFTicker, RAFTickerEventType } from "raf-ticker";
 import { Fog, Mesh, SphereGeometry, Spherical } from "three";
 import { AutoSphericalRotor } from "../bin";
 import { DragWatcher, SleepWatcher } from "threejs-drag-watcher";
@@ -34,7 +34,7 @@ export class Demo {
       defaultR: 100
     });
 
-    ThreeTicker.addEventListener(ThreeTickerEventType.tick, () => {
+    RAFTicker.addEventListener(RAFTickerEventType.tick, () => {
       renderer.render(scene, camera);
     });
   }

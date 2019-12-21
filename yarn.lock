@@ -5973,10 +5973,6 @@ three@^0.111.0:
   dependencies:
     raf-ticker "https://github.com/MasatoMakino/raf-ticker.git"
 
-"threejs-ticker@https://github.com/MasatoMakino/threejs-ticker.git":
-  version "0.1.0"
-  resolved "https://github.com/MasatoMakino/threejs-ticker.git#c12970447a414f76c7f2a8f5f3e4b9334c007438"
-
 through2-filter@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/through2-filter/-/through2-filter-3.0.0.tgz#700e786df2367c2c88cd8aa5be4cf9c1e7831254"
