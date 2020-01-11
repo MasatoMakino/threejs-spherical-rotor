@@ -1,36 +1,39 @@
 {
   "name": "threejs-spherical-rotor",
-  "version": "0.1.1",
-  "main": "./bin/index.js",
-  "types": "./bin/index.d.ts",
+  "version": "0.2.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "module": "./esm/index.js",
+  "files": [
+    "lib",
+    "esm"
+  ],
   "description": "Loop rotation plugin for threejs-spherical-controls.",
   "repository": "https://MasatoMakino@github.com/MasatoMakino/threejs-spherical-rotor.git",
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
-  "peerDependencies": {
-    "three": "^0.111.0",
+  "dependencies": {
     "threejs-drag-watcher": "https://github.com/MasatoMakino/threejs-drag-watcher.git",
-    "threejs-spherical-controls": "https://github.com/MasatoMakino/threejs-spherical-controls.git",
-    "tweenjs": "^1.0.2"
+    "threejs-spherical-controls": "https://github.com/MasatoMakino/threejs-spherical-controls.git"
+  },
+  "peerDependencies": {
+    "three": "^0.111.0"
   },
   "devDependencies": {
-    "@types/tweenjs": "^1.0.0",
+    "@tweenjs/tween.js": "^18.5.0",
+    "@types/tween.js": "^17.2.0",
     "dat.gui": "^0.7.6",
     "gulp": "^4.0.2",
     "gulptask-demo-page": "https://github.com/MasatoMakino/gulptask-demo-page.git",
     "gulptask-dev-server": "https://github.com/MasatoMakino/gulptask-dev-server.git",
     "gulptask-tsc": "https://github.com/MasatoMakino/gulptask-tsc.git",
     "gulptask-tsdoc": "https://github.com/MasatoMakino/gulptask-tsdoc.git",
-    "husky": "^3.1.0",
+    "husky": "^4.0.6",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
-    "raf-ticker": "https://github.com/MasatoMakino/raf-ticker.git",
-    "three": "^0.111.0",
-    "threejs-drag-watcher": "https://github.com/MasatoMakino/threejs-drag-watcher.git",
-    "threejs-spherical-controls": "https://github.com/MasatoMakino/threejs-spherical-controls.git",
-    "ts-node": "^8.5.4",
-    "tweenjs": "^1.0.2",
-    "typescript": "^3.7.3"
+    "three": "^0.112.1",
+    "ts-node": "^8.6.1",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "start:dev": "gulp start_dev",

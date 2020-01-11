@@ -1,7 +1,7 @@
 import { Common } from "./Common";
 import { RAFTicker, RAFTickerEventType } from "raf-ticker";
 import { Fog, Mesh, SphereGeometry, Spherical } from "three";
-import { AutoSphericalRotor } from "../bin";
+import { AutoSphericalRotor } from "../lib";
 import { DragWatcher, SleepWatcher } from "threejs-drag-watcher";
 import { SphericalController } from "threejs-spherical-controls";
 
