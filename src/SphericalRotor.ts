@@ -1,6 +1,6 @@
 import {
   SphericalController,
-  SphericalParamType
+  SphericalParamType,
 } from "threejs-spherical-controls";
 import { SleepEventType, SleepWatcher } from "threejs-drag-watcher";
 
@@ -53,7 +53,7 @@ export class SphericalRotor {
         this._config.minPhi,
         this._config.maxPhi,
         {
-          duration: this._config.loopPhiDuration
+          duration: this._config.loopPhiDuration,
         }
       );
     }
@@ -64,7 +64,7 @@ export class SphericalRotor {
         this._config.minTheta,
         this._config.maxTheta,
         {
-          duration: this._config.loopThetaDuration
+          duration: this._config.loopThetaDuration,
         }
       );
     }
@@ -75,7 +75,7 @@ export class SphericalRotor {
         this._config.minR,
         this._config.maxR,
         {
-          duration: this._config.loopRDuration
+          duration: this._config.loopRDuration,
         }
       );
     }
@@ -104,7 +104,7 @@ export class SphericalRotor {
 
   /**
    * カメラの回転を一時停止する。
-   * @param [option]　option.returnR = falseの時、アニメーションを行わない。
+   * @param [option] option.returnR = falseの時、アニメーションを行わない。
    */
   public stop(option?: RotorStopConfig): void {
     if (!this.isRotation) return;
@@ -128,7 +128,7 @@ export class SphericalRotor {
         SphericalParamType.R,
         this._config.defaultR,
         {
-          duration: 333
+          duration: 333,
         }
       );
     }
