@@ -20,7 +20,7 @@ export declare class SphericalRotor {
     stopRotation: () => void;
     /**
      * カメラの回転を一時停止する。
-     * @param [option]　option.returnR = falseの時、アニメーションを行わない。
+     * @param [option] option.returnR = falseの時、アニメーションを行わない。
      */
     stop(option?: RotorStopConfig): void;
     static getDefaultStopParam(option: RotorStopConfig): RotorStopConfig;

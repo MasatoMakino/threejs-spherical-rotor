@@ -1,4 +1,4 @@
-import { SphericalParamType } from "threejs-spherical-controls";
+import { SphericalParamType, } from "threejs-spherical-controls";
 import { SleepEventType } from "threejs-drag-watcher";
 export class SphericalRotor {
     constructor(cameraController) {
@@ -14,19 +14,19 @@ export class SphericalRotor {
             //縦往復ループ
             if (this._config.maxPhi != null && this._config.minPhi != null) {
                 this.cameraController.loop(SphericalParamType.PHI, this._config.minPhi, this._config.maxPhi, {
-                    duration: this._config.loopPhiDuration
+                    duration: this._config.loopPhiDuration,
                 });
             }
             //横往復ループ
             if (this._config.maxTheta != null && this._config.minTheta != null) {
                 this.cameraController.loop(SphericalParamType.THETA, this._config.minTheta, this._config.maxTheta, {
-                    duration: this._config.loopThetaDuration
+                    duration: this._config.loopThetaDuration,
                 });
             }
             //ズームインアウトループ
             if (this._config.maxR != null && this._config.minR != null) {
                 this.cameraController.loop(SphericalParamType.R, this._config.minR, this._config.maxR, {
-                    duration: this._config.loopRDuration
+                    duration: this._config.loopRDuration,
                 });
             }
             this.isRotation = true;
@@ -66,7 +66,7 @@ export class SphericalRotor {
     }
     /**
      * カメラの回転を一時停止する。
-     * @param [option]　option.returnR = falseの時、アニメーションを行わない。
+     * @param [option] option.returnR = falseの時、アニメーションを行わない。
      */
     stop(option) {
         if (!this.isRotation)
@@ -83,7 +83,7 @@ export class SphericalRotor {
             option &&
             option.returnR === true) {
             this.cameraController.movePosition(SphericalParamType.R, this._config.defaultR, {
-                duration: 333
+                duration: 333,
             });
         }
     }
