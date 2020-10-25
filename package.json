@@ -17,9 +17,11 @@
     "threejs-spherical-controls": "https://github.com/MasatoMakino/threejs-spherical-controls.git"
   },
   "peerDependencies": {
-    "three": "^0.116.0"
+    "@tweenjs/tween.js": "^18.6.4",
+    "three": "^0.121.1"
   },
   "devDependencies": {
+    "@tweenjs/tween.js": "^18.6.4",
     "dat.gui": "^0.7.7",
     "gulp": "^4.0.2",
     "gulptask-demo-page": "https://github.com/MasatoMakino/gulptask-demo-page.git",

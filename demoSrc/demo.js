@@ -1,9 +1,12 @@
 import { Common } from "./Common";
 import { RAFTicker, RAFTickerEventType } from "raf-ticker";
-import { Fog, Mesh, MeshBasicMaterial, SphereGeometry, Spherical } from "three";
+import { Fog, Spherical } from "three";
 import { AutoSphericalRotor } from "../lib";
 import { DragWatcher, SleepWatcher } from "threejs-drag-watcher";
-import { SphericalController } from "threejs-spherical-controls";
+import {
+  SphericalController,
+  SphericalControllerUtil,
+} from "threejs-spherical-controls";
 
 let scene;
 export class Demo {
@@ -19,7 +22,8 @@ export class Demo {
 
     const helper = Common.initHelper(scene);
 
-    const target = this.initTarget(scene);
+    const target = SphericalControllerUtil.generateCameraTarget();
+    scene.add(target);
     const control = new SphericalController(camera, target);
 
     control.initCameraPosition(new Spherical(100, Math.PI / 2, 0));
@@ -40,18 +44,6 @@ export class Demo {
     RAFTicker.on(RAFTickerEventType.tick, () => {
       renderer.render(scene, camera);
     });
-  }
-
-  initTarget() {
-    const geo = new SphereGeometry(1);
-    const material = new MeshBasicMaterial({
-      color: 0xff0000,
-      opacity: 0.0,
-      transparent: true,
-    });
-    const cameraTarget = new Mesh(geo, material);
-    scene.add(cameraTarget);
-    return cameraTarget;
   }
 }
 
