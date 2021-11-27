@@ -18,19 +18,11 @@ export class SphericalRotor {
   }
 
   set config(parameters: SphericalRotorConfig) {
-    if (parameters === null) {
-      parameters = {};
-    }
-    if (parameters.loopPhiDuration == null) {
-      parameters.loopPhiDuration = AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
-    }
-    if (parameters.loopThetaDuration == null) {
-      parameters.loopThetaDuration =
-        AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
-    }
-    if (parameters.loopRDuration == null) {
-      parameters.loopRDuration = AutoSphericalRotor.DEFAULT_LOOP_R_DURATION;
-    }
+    parameters ??= {};
+    parameters.loopPhiDuration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
+    parameters.loopThetaDuration ??=
+      AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
+    parameters.loopRDuration ??= AutoSphericalRotor.DEFAULT_LOOP_R_DURATION;
     this._config = parameters;
   }
 
