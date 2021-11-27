@@ -22,29 +22,25 @@
   },
   "devDependencies": {
     "@tweenjs/tween.js": "^18.6.4",
-    "@types/three": "^0.132.2",
+    "@types/three": "^0.134.0",
     "dat.gui": "^0.7.7",
-    "gulp": "^4.0.2",
     "gulptask-demo-page": "MasatoMakino/gulptask-demo-page",
     "gulptask-dev-server": "MasatoMakino/gulptask-dev-server",
-    "gulptask-tsc": "MasatoMakino/gulptask-tsc",
-    "gulptask-tsdoc": "MasatoMakino/gulptask-tsdoc",
-    "husky": "^7.0.2",
-    "prettier": "^2.4.1",
-    "pretty-quick": "^3.1.1",
-    "three": "^0.133.1",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.4.3"
+    "husky": "^7.0.4",
+    "prettier": "^2.5.0",
+    "pretty-quick": "^3.1.2",
+    "three": "^0.135.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
   },
   "scripts": {
     "start:dev": "gulp start_dev",
     "build": "gulp build",
-    "build:clean": "gulp build_clean",
-    "checkout:docs": "git checkout HEAD ./docs/"
+    "build:clean": "gulp build_clean"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "npx pretty-quick --staged"
     }
   }
 }
