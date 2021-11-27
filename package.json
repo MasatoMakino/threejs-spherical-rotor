@@ -31,12 +31,18 @@
     "pretty-quick": "^3.1.2",
     "three": "^0.135.0",
     "ts-node": "^10.4.0",
+    "typedoc": "^0.22.10",
     "typescript": "^4.4.4"
   },
   "scripts": {
-    "start:dev": "gulp start_dev",
-    "build": "gulp build",
-    "build:clean": "gulp build_clean"
+    "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
+    "build": "npm run demo & npm run buildTS",
+    "demo": "npx gulptask-demo-page --body '<canvas id=\"webgl-canvas\" width=\"640\" height=\"480\"></canvas>'",
+    "buildTS": "npx tsc --project tsconfig.json & tsc --project tsconfig.esm.json",
+    "typedocs": "npx typedoc --out ./docs/api src/index.ts",
+    "server": "npx gulptask-dev-server -b ./docs/demo",
+    "watch:demo": "npm run demo -- -W",
+    "watch:tsc": "tsc -W --incremental --project tsconfig.json & tsc -W --incremental --project tsconfig.esm.json"
   },
   "husky": {
     "hooks": {
