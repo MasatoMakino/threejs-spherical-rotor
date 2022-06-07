@@ -1,12 +1,12 @@
 import { Common } from "./Common";
-import { RAFTicker, RAFTickerEventType } from "raf-ticker";
+import { RAFTicker, RAFTickerEventType } from "@masatomakino/raf-ticker";
 import { Fog, Spherical } from "three";
-import { AutoSphericalRotor } from "../lib";
-import { DragWatcher, SleepWatcher } from "threejs-drag-watcher";
+import { AutoSphericalRotor } from "..";
+import { DragWatcher, SleepWatcher } from "@masatomakino/threejs-drag-watcher";
 import {
   SphericalController,
   SphericalControllerUtil,
-} from "threejs-spherical-controls";
+} from "@masatomakino/threejs-spherical-controls";
 
 let scene;
 export class Demo {
