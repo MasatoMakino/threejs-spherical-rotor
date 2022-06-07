@@ -1,5 +1,5 @@
 {
-  "name": "threejs-spherical-rotor",
+  "name": "@masatomakino/threejs-spherical-rotor",
   "version": "0.3.2",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -9,7 +9,10 @@
     "esm"
   ],
   "description": "Loop rotation plugin for threejs-spherical-controls.",
-  "repository": "https://MasatoMakino@github.com/MasatoMakino/threejs-spherical-rotor.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://MasatoMakino@github.com/MasatoMakino/threejs-spherical-rotor.git"
+  },
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -43,5 +46,13 @@
     "server": "npx @masatomakino/gulptask-dev-server -b ./docs/demo",
     "watch:demo": "npm run demo -- -W",
     "watch:tsc": "npx tsc -W --incremental --project tsconfig.json & npx tsc -W --incremental --project tsconfig.esm.json"
+  },
+  "bugs": {
+    "url": "https://github.com/MasatoMakino/threejs-spherical-rotor/issues"
+  },
+  "homepage": "https://github.com/MasatoMakino/threejs-spherical-rotor#readme",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
   }
 }
