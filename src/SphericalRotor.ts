@@ -1,8 +1,11 @@
 import {
   SphericalController,
   SphericalParamType,
-} from "threejs-spherical-controls";
-import { SleepEventType, SleepWatcher } from "threejs-drag-watcher";
+} from "@masatomakino/threejs-spherical-controls";
+import {
+  SleepEventType,
+  SleepWatcher,
+} from "@masatomakino/threejs-drag-watcher";
 
 export class SphericalRotor {
   private cameraController: SphericalController;
@@ -83,7 +86,9 @@ export class SphericalRotor {
     if (this._config.speed == null) return;
     this.cameraController.addPosition(
       SphericalParamType.THETA,
-      this._config.speed
+      this._config.speed,
+      false,
+      true
     );
   };
 

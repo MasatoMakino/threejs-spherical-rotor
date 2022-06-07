@@ -20,7 +20,7 @@ export class Demo {
     const camera = Common.initCamera(scene, W, H);
     const renderer = Common.initRenderer(W, H, { antialias: false });
 
-    const helper = Common.initHelper(scene);
+    Common.initHelper(scene);
 
     const target = SphericalControllerUtil.generateCameraTarget();
     scene.add(target);
@@ -32,8 +32,7 @@ export class Demo {
 
     const rotor = new AutoSphericalRotor(sleepWatcher, control);
     rotor.start({
-      minTheta: -Math.PI / 4,
-      maxTheta: Math.PI / 4,
+      speed: 0.005,
       minPhi: 0,
       maxPhi: Math.PI / 2,
       minR: 100 / 3,
