@@ -20,7 +20,7 @@ export class Demo {
     const camera = Common.initCamera(scene, W, H);
     const renderer = Common.initRenderer(W, H, { antialias: false });
 
-    const helper = Common.initHelper(scene);
+    Common.initHelper(scene);
 
     const target = SphericalControllerUtil.generateCameraTarget();
     scene.add(target);
