@@ -29,8 +29,8 @@ export class SphericalRotor {
     this._config = parameters;
   }
 
-  public startRotation = () => {
-    this.stopRotation();
+  public rotate(): void {
+    this.stop();
 
     if (this.isRotation) return;
 
@@ -76,6 +76,13 @@ export class SphericalRotor {
     }
 
     this.isRotation = true;
+  }
+
+  /**
+   * @deprecated use rotate();
+   */
+  public startRotation = () => {
+    this.rotate();
   };
 
   /**
@@ -94,6 +101,7 @@ export class SphericalRotor {
 
   /**
    * カメラの自動回転を停止する
+   * @deprecated use stop()
    */
   public stopRotation = () => {
     this.stop();
@@ -171,14 +179,8 @@ export class AutoSphericalRotor extends SphericalRotor {
   }
 
   private stopWatcher(): void {
-    this.sleepWatcher.removeEventListener(
-      SleepEventType.SLEEP,
-      this.startRotation
-    );
-    this.sleepWatcher.removeEventListener(
-      SleepEventType.WAKEUP,
-      this.stopRotation
-    );
+    this.sleepWatcher.removeEventListener(SleepEventType.SLEEP, this.onSleep);
+    this.sleepWatcher.removeEventListener(SleepEventType.WAKEUP, this.onWakeup);
     this.sleepWatcher.stop();
   }
 
@@ -195,23 +197,35 @@ export class AutoSphericalRotor extends SphericalRotor {
 
   /**
    * マウスの監視を開始する。
+   * @param parameters
+   * @deprecated use watch();
    */
   public start(parameters?: SphericalRotorConfig): void {
+    this.watch(parameters);
+  }
+
+  /**
+   * マウスの監視を開始する。
+   * @param parameters
+   */
+  public watch(parameters?: SphericalRotorConfig): void {
     this.config = parameters;
     this.isStart = true;
     this.startWatcher();
   }
 
+  public onSleep = () => {
+    this.rotate();
+  };
+
+  public onWakeup = () => {
+    this.stop();
+  };
+
   private startWatcher(): void {
     this.stopWatcher();
-    this.sleepWatcher.addEventListener(
-      SleepEventType.SLEEP,
-      this.startRotation
-    );
-    this.sleepWatcher.addEventListener(
-      SleepEventType.WAKEUP,
-      this.stopRotation
-    );
+    this.sleepWatcher.addEventListener(SleepEventType.SLEEP, this.onSleep);
+    this.sleepWatcher.addEventListener(SleepEventType.WAKEUP, this.onWakeup);
     this.sleepWatcher.start();
   }
 }
