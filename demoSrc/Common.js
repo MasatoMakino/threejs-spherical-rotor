@@ -42,15 +42,15 @@ export class Common {
     option = Object.assign(
       {
         color: 0x000000,
-        id: "webgl-canvas",
         antialias: true,
       },
       option
     );
+
     const renderer = new WebGLRenderer({
-      canvas: document.getElementById(option.id),
       antialias: option.antialias,
     });
+    document.body.appendChild(renderer.domElement);
     renderer.setClearColor(new Color(option.color));
     renderer.setSize(W, H);
     renderer.setPixelRatio(window.devicePixelRatio);
