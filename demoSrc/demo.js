@@ -31,7 +31,7 @@ export class Demo {
     const sleepWatcher = new SleepWatcher(dragWatcher, { timeOut_ms: 1000 });
 
     const rotor = new AutoSphericalRotor(sleepWatcher, control);
-    rotor.start({
+    rotor.watch({
       minTheta: -Math.PI / 4,
       maxTheta: Math.PI / 4,
       minPhi: 0,
@@ -48,5 +48,5 @@ export class Demo {
 }
 
 window.onload = () => {
-  const demo = new Demo();
+  new Demo();
 };
