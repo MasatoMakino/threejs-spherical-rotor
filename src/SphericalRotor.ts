@@ -11,13 +11,10 @@ import { RAFTicker } from "@masatomakino/raf-ticker";
 import { RAFTickerEvent, RAFTickerEventType } from "@masatomakino/raf-ticker";
 
 export class SphericalRotor {
-  private cameraController: SphericalController;
   protected _config: SphericalRotorConfig;
   private isRotation: boolean = false;
 
-  constructor(cameraController: SphericalController) {
-    this.cameraController = cameraController;
-  }
+  constructor(private cameraController: SphericalController) {}
 
   set config(parameters: SphericalRotorConfig) {
     this._config = SphericalRotorConfigUtil.init(parameters);

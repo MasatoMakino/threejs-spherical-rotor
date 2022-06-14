@@ -8,17 +8,15 @@ import { RotorStopConfig, SphericalRotor, SphericalRotorConfig } from "./";
  * マウスが無操作の場合、回転を始め、操作が再開されると停止する。
  */
 export class AutoSphericalRotor extends SphericalRotor {
-  private sleepWatcher: SleepWatcher;
   private isStart: boolean = false;
   public static readonly DEFAULT_LOOP_LAT_DURATION: number = 30 * 1000;
   public static readonly DEFAULT_LOOP_R_DURATION: number = 30 * 1000;
 
   constructor(
-    sleepWatcher: SleepWatcher,
+    private sleepWatcher: SleepWatcher,
     cameraController: SphericalController
   ) {
     super(cameraController);
-    this.sleepWatcher = sleepWatcher;
   }
 
   /**
