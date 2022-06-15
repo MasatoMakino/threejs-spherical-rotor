@@ -28,41 +28,34 @@ export class SphericalRotor {
     if (this._config.speed != null) {
       RAFTicker.on(RAFTickerEventType.tick, this.rotateTheta);
     }
+
     //縦往復ループ
-    if (this._config.maxPhi != null && this._config.minPhi != null) {
-      this.cameraController.loop(
-        SphericalParamType.PHI,
-        this._config.minPhi,
-        this._config.maxPhi,
-        {
-          duration: this._config.loopPhiDuration,
-        }
-      );
-    }
+    this.startSphericalCameraLoop(SphericalParamType.PHI);
     //横往復ループ
-    if (this._config.maxTheta != null && this._config.minTheta != null) {
-      this.cameraController.loop(
-        SphericalParamType.THETA,
-        this._config.minTheta,
-        this._config.maxTheta,
-        {
-          duration: this._config.loopThetaDuration,
-        }
-      );
-    }
+    this.startSphericalCameraLoop(SphericalParamType.THETA);
     //ズームインアウトループ
-    if (this._config.maxR != null && this._config.minR != null) {
-      this.cameraController.loop(
-        SphericalParamType.R,
-        this._config.minR,
-        this._config.maxR,
-        {
-          duration: this._config.loopRDuration,
-        }
-      );
-    }
+    this.startSphericalCameraLoop(SphericalParamType.R);
 
     this.isRotation = true;
+  }
+
+  /**
+   * configオブジェクトから、縦、横、ズームループの状態を取り出す。
+   * 設定されている場合、ループを開始する。
+   *
+   * @param type 縦、横、ズームのいずれか
+   * @private
+   */
+  private startSphericalCameraLoop(type: SphericalParamType): void {
+    const loop = SphericalRotorConfigUtil.extractSphericalParam(
+      this._config,
+      type
+    );
+    if (loop == null) return;
+
+    this.cameraController.loop(type, loop.min, loop.max, {
+      duration: loop.duration,
+    });
   }
 
   /**

@@ -1,4 +1,5 @@
 import { AutoSphericalRotor } from "./";
+import { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
 
 /**
  * 回転の動作を指定する。
@@ -25,4 +26,48 @@ export class SphericalRotorConfigUtil {
     config.loopRDuration ??= AutoSphericalRotor.DEFAULT_LOOP_R_DURATION;
     return config;
   }
+
+  /**
+   * ループアニメーションに必要な情報を、configオブジェクトから取り出す。
+   * @param config
+   * @param type
+   */
+  public static extractSphericalParam(
+    config: SphericalRotorConfig,
+    type: SphericalParamType
+  ): LoopParameter | null {
+    let param: LoopParameter;
+    switch (type) {
+      case SphericalParamType.PHI:
+        param = {
+          max: config.maxPhi,
+          min: config.minPhi,
+          duration: config.loopPhiDuration,
+        };
+        break;
+      case SphericalParamType.THETA:
+        param = {
+          max: config.maxTheta,
+          min: config.minTheta,
+          duration: config.loopThetaDuration,
+        };
+        break;
+      case SphericalParamType.R:
+        param = {
+          max: config.maxR,
+          min: config.minR,
+          duration: config.loopRDuration,
+        };
+        break;
+    }
+
+    if (param == null || param.max == null || param.min == null) return null;
+    return param;
+  }
+}
+
+export interface LoopParameter {
+  max: number;
+  min: number;
+  duration: number;
 }
