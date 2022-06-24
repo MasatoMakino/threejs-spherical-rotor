@@ -2,16 +2,18 @@ import {
   AmbientLight,
   AxesHelper,
   Color,
+  ConeGeometry,
+  MeshBasicMaterial,
   PerspectiveCamera,
   Scene,
   WebGLRenderer,
+  Mesh,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export class Common {
   static initScene() {
-    const scene = new Scene();
-    return scene;
+    return new Scene();
   }
 
   static initLight(scene) {
@@ -58,8 +60,13 @@ export class Common {
   }
 
   static initHelper(scene) {
-    const axesHelper = new AxesHelper(30);
+    const axesHelper = new AxesHelper(20);
     scene.add(axesHelper);
+    const cone = new Mesh(
+      new ConeGeometry(5, 10, 16),
+      new MeshBasicMaterial({ wireframe: true })
+    );
+    scene.add(cone);
     return axesHelper;
   }
 }
