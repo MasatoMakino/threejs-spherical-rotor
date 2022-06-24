@@ -32,12 +32,18 @@ export class Demo {
 
     const rotor = new AutoSphericalRotor(sleepWatcher, control);
     rotor.watch({
-      minTheta: -Math.PI / 4,
-      maxTheta: Math.PI / 4,
-      minPhi: 0,
-      maxPhi: Math.PI / 2,
-      minR: 100 / 3,
-      maxR: 100,
+      loopPhi: {
+        min: 0,
+        max: Math.PI,
+      },
+      loopTheta: {
+        min: 0,
+        max: Math.PI / 2,
+      },
+      loopR: {
+        min: 100 / 3,
+        max: 100,
+      },
       defaultR: 100,
     });
 
