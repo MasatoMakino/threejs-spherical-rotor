@@ -10,6 +10,9 @@ import {
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import { RAFTickerEvent, RAFTickerEventType } from "@masatomakino/raf-ticker";
 
+export interface LoopOption {
+  startTime?: number;
+}
 export class SphericalRotor {
   protected _config: SphericalRotorConfig;
   private isRotation: boolean = false;
@@ -20,7 +23,7 @@ export class SphericalRotor {
     this._config = SphericalRotorConfigUtil.init(parameters);
   }
 
-  public rotate(): void {
+  public rotate(option?: LoopOption): void {
     this.stop();
     if (this.isRotation) return;
 
@@ -30,11 +33,11 @@ export class SphericalRotor {
     }
 
     //縦往復ループ
-    this.startSphericalCameraLoop(SphericalParamType.PHI);
+    this.startSphericalCameraLoop(SphericalParamType.PHI, option);
     //横往復ループ
-    this.startSphericalCameraLoop(SphericalParamType.THETA);
+    this.startSphericalCameraLoop(SphericalParamType.THETA, option);
     //ズームインアウトループ
-    this.startSphericalCameraLoop(SphericalParamType.R);
+    this.startSphericalCameraLoop(SphericalParamType.R, option);
 
     this.isRotation = true;
   }
@@ -46,7 +49,10 @@ export class SphericalRotor {
    * @param type 縦、横、ズームのいずれか
    * @private
    */
-  private startSphericalCameraLoop(type: SphericalParamType): void {
+  private startSphericalCameraLoop(
+    type: SphericalParamType,
+    option?: LoopOption
+  ): void {
     const loop = SphericalRotorConfigUtil.extractSphericalParam(
       this._config,
       type
@@ -55,6 +61,7 @@ export class SphericalRotor {
 
     this.cameraController.loop(type, loop.min, loop.max, {
       duration: loop.duration,
+      startTime: option?.startTime,
     });
   }
 
