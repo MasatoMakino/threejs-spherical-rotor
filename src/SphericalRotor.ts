@@ -23,9 +23,16 @@ export class SphericalRotor {
     this._config = SphericalRotorConfigUtil.init(parameters);
   }
 
+  /**
+   * 回転アニメーションを開始する。
+   *
+   * rotateとstopは対の関係ではない。異なるoptionを指定された場合、rotateは現状のアニメーションを上書きして再実行される。
+   * @param option
+   */
   public rotate(option?: LoopOption): void {
-    this.stop();
-    if (this.isRotation) return;
+    if (this.isRotation) {
+      this.stop();
+    }
 
     //横回転
     if (this._config.speed != null) {
@@ -47,6 +54,7 @@ export class SphericalRotor {
    * 設定されている場合、ループを開始する。
    *
    * @param type 縦、横、ズームのいずれか
+   * @param option
    * @private
    */
   private startSphericalCameraLoop(
@@ -66,13 +74,6 @@ export class SphericalRotor {
   }
 
   /**
-   * @deprecated use rotate();
-   */
-  public startRotation = () => {
-    this.rotate();
-  };
-
-  /**
    * カメラを横回転させる
    * 往復ではなく無限運動。
    */
@@ -84,14 +85,6 @@ export class SphericalRotor {
       false,
       true
     );
-  };
-
-  /**
-   * カメラの自動回転を停止する
-   * @deprecated use stop()
-   */
-  public stopRotation = () => {
-    this.stop();
   };
 
   /**
