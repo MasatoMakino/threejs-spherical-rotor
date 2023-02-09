@@ -59,7 +59,7 @@ describe("SphericalRotor", () => {
     testPosition(controller, 2000, SphericalParamType.R, 1);
 
     rotor.stop();
-    testPosition(controller, 3000, SphericalParamType.R, 0.5);
+    testPosition(controller, 10000, SphericalParamType.R, 0.5);
   });
 
   test("rotate and stop without default radius", () => {
@@ -72,7 +72,7 @@ describe("SphericalRotor", () => {
     testPosition(controller, 2000, SphericalParamType.R, 1);
 
     rotor.stop();
-    testPosition(controller, 3000, SphericalParamType.R, 1);
+    testPosition(controller, 10000, SphericalParamType.R, 1);
   });
 
   test("rotate theta", () => {
