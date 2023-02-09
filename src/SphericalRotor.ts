@@ -10,6 +10,9 @@ import {
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import { RAFTickerEvent, RAFTickerEventType } from "@masatomakino/raf-ticker";
 
+export interface LoopOption {
+  startTime?: number;
+}
 export class SphericalRotor {
   protected _config: SphericalRotorConfig;
   private isRotation: boolean = false;
@@ -20,9 +23,16 @@ export class SphericalRotor {
     this._config = SphericalRotorConfigUtil.init(parameters);
   }
 
-  public rotate(): void {
-    this.stop();
-    if (this.isRotation) return;
+  /**
+   * 回転アニメーションを開始する。
+   *
+   * rotateとstopは対の関係ではない。異なるoptionを指定された場合、rotateは現状のアニメーションを上書きして再実行される。
+   * @param option
+   */
+  public rotate(option?: LoopOption): void {
+    if (this.isRotation) {
+      this.stop();
+    }
 
     //横回転
     if (this._config.speed != null) {
@@ -30,11 +40,11 @@ export class SphericalRotor {
     }
 
     //縦往復ループ
-    this.startSphericalCameraLoop(SphericalParamType.PHI);
+    this.startSphericalCameraLoop(SphericalParamType.PHI, option);
     //横往復ループ
-    this.startSphericalCameraLoop(SphericalParamType.THETA);
+    this.startSphericalCameraLoop(SphericalParamType.THETA, option);
     //ズームインアウトループ
-    this.startSphericalCameraLoop(SphericalParamType.R);
+    this.startSphericalCameraLoop(SphericalParamType.R, option);
 
     this.isRotation = true;
   }
@@ -44,9 +54,13 @@ export class SphericalRotor {
    * 設定されている場合、ループを開始する。
    *
    * @param type 縦、横、ズームのいずれか
+   * @param option
    * @private
    */
-  private startSphericalCameraLoop(type: SphericalParamType): void {
+  private startSphericalCameraLoop(
+    type: SphericalParamType,
+    option?: LoopOption
+  ): void {
     const loop = SphericalRotorConfigUtil.extractSphericalParam(
       this._config,
       type
@@ -55,15 +69,9 @@ export class SphericalRotor {
 
     this.cameraController.loop(type, loop.min, loop.max, {
       duration: loop.duration,
+      startTime: option?.startTime,
     });
   }
-
-  /**
-   * @deprecated use rotate();
-   */
-  public startRotation = () => {
-    this.rotate();
-  };
 
   /**
    * カメラを横回転させる
@@ -77,14 +85,6 @@ export class SphericalRotor {
       false,
       true
     );
-  };
-
-  /**
-   * カメラの自動回転を停止する
-   * @deprecated use stop()
-   */
-  public stopRotation = () => {
-    this.stop();
   };
 
   /**

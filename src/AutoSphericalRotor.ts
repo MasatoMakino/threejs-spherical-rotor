@@ -2,6 +2,7 @@ import { SleepWatcher } from "@masatomakino/threejs-drag-watcher";
 import { SleepEventType } from "@masatomakino/threejs-drag-watcher";
 import { SphericalController } from "@masatomakino/threejs-spherical-controls";
 import { RotorStopConfig, SphericalRotor, SphericalRotorConfig } from "./";
+import { LoopOption } from "./";
 
 /**
  * マウス操作を監視し、回転を制御するクラス。
@@ -9,6 +10,7 @@ import { RotorStopConfig, SphericalRotor, SphericalRotorConfig } from "./";
  */
 export class AutoSphericalRotor extends SphericalRotor {
   private isStart: boolean = false;
+  private loopOption?: LoopOption;
   public static readonly DEFAULT_LOOP_LAT_DURATION: number = 30 * 1000;
   public static readonly DEFAULT_LOOP_R_DURATION: number = 30 * 1000;
 
@@ -21,7 +23,7 @@ export class AutoSphericalRotor extends SphericalRotor {
 
   /**
    * マウスの監視を一時停止する
-   * @param [option]　option.returnR =　falseの時のみ、アニメーションを行わず原位置でマウス監視が停止する。監視を停止させた後に別のアニメーションでカメラを移動したかったり、元に戻したかったりする場合に使う。
+   * @param [option] option.returnR =　falseの時のみ、アニメーションを行わず原位置でマウス監視が停止する。監視を停止させた後に別のアニメーションでカメラを移動したかったり、元に戻したかったりする場合に使う。
    */
   public pause(option?: RotorStopConfig): void {
     if (!this.isStart) return;
@@ -41,7 +43,7 @@ export class AutoSphericalRotor extends SphericalRotor {
 
   /**
    * マウスの監視を再開する。
-   * 各種設定はstart()で指定されたオプションを引き継ぐ。
+   * 各種設定はwatch()で指定されたオプションを引き継ぐ。
    * pause()関数で停止された監視を再開させるための関数。
    */
   public resume(): void {
@@ -53,24 +55,20 @@ export class AutoSphericalRotor extends SphericalRotor {
   /**
    * マウスの監視を開始する。
    * @param parameters
-   * @deprecated use watch();
+   * @param loopOption
    */
-  public start(parameters?: SphericalRotorConfig): void {
-    this.watch(parameters);
-  }
-
-  /**
-   * マウスの監視を開始する。
-   * @param parameters
-   */
-  public watch(parameters?: SphericalRotorConfig): void {
+  public watch(
+    parameters?: SphericalRotorConfig,
+    loopOption?: LoopOption
+  ): void {
     this.config = parameters;
+    this.loopOption = loopOption;
     this.isStart = true;
     this.startWatcher();
   }
 
   public onSleep = () => {
-    this.rotate();
+    this.rotate(this.loopOption);
   };
 
   public onWakeup = () => {
