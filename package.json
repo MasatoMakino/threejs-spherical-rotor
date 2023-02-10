@@ -42,8 +42,8 @@
     "three": ">=0.126.0 <1.0.0"
   },
   "scripts": {
-    "test": "npx jest --runInBand",
-    "coverage": "npx jest --runInBand --coverage",
+    "test": "npx jest",
+    "coverage": "npx jest --coverage",
     "prepare": "husky install",
     "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
     "build": "npm run buildTS && npm run demo",
