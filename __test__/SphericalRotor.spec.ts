@@ -54,12 +54,12 @@ describe("SphericalRotor", () => {
     rotor.config = { loopR: { max: 2, min: 1, duration: 1000 }, defaultR: 0.5 };
     rotor.rotate({ startTime: 0 });
 
-    testPosition(controller, 1000, SphericalParamType.R, 2);
-    testPosition(controller, 1500, SphericalParamType.R, 1.5);
-    testPosition(controller, 2000, SphericalParamType.R, 1);
+    testPosition(controller, 1000, "radius", 2);
+    testPosition(controller, 1500, "radius", 1.5);
+    testPosition(controller, 2000, "radius", 1);
 
     rotor.stop();
-    testPosition(controller, 10000, SphericalParamType.R, 0.5);
+    testPosition(controller, 10000, "radius", 0.5);
   });
 
   test("rotate and stop without default radius", () => {
@@ -68,11 +68,11 @@ describe("SphericalRotor", () => {
     rotor.config = { loopR: { max: 2, min: 1, duration: 1000 } };
     rotor.rotate({ startTime: 0 });
 
-    testPosition(controller, 1000, SphericalParamType.R, 2);
-    testPosition(controller, 2000, SphericalParamType.R, 1);
+    testPosition(controller, 1000, "radius", 2);
+    testPosition(controller, 2000, "radius", 1);
 
     rotor.stop();
-    testPosition(controller, 10000, SphericalParamType.R, 1);
+    testPosition(controller, 10000, "radius", 1);
   });
 
   test("rotate theta", () => {
@@ -83,7 +83,7 @@ describe("SphericalRotor", () => {
     rotor.config = { speed };
     rotor.rotate({ startTime: 0 });
 
-    testPosition(controller, 1000, SphericalParamType.THETA, speed * 30);
-    testPosition(controller, 2000, SphericalParamType.THETA, speed * 30 * 2);
+    testPosition(controller, 1000, "theta", speed * 30);
+    testPosition(controller, 2000, "theta", speed * 30 * 2);
   });
 });

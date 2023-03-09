@@ -33,11 +33,11 @@ describe("SphericalRotorConfig", () => {
     const testParam = (type: SphericalParamType) => {
       const getLoopType = (type: SphericalParamType) => {
         switch (type) {
-          case SphericalParamType.PHI:
+          case "phi":
             return "loopPhi";
-          case SphericalParamType.THETA:
+          case "theta":
             return "loopTheta";
-          case SphericalParamType.R:
+          case "radius":
             return "loopR";
         }
       };
@@ -57,8 +57,8 @@ describe("SphericalRotorConfig", () => {
       expect(param).toBeTruthy();
     };
 
-    testParam(SphericalParamType.THETA);
-    testParam(SphericalParamType.PHI);
-    testParam(SphericalParamType.R);
+    testParam("theta");
+    testParam("phi");
+    testParam("radius");
   });
 });

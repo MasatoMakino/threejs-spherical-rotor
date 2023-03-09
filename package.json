@@ -16,8 +16,8 @@
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@masatomakino/threejs-drag-watcher": "^0.7.9",
-    "@masatomakino/threejs-spherical-controls": "^0.4.8"
+    "@masatomakino/threejs-drag-watcher": "^0.8.0",
+    "@masatomakino/threejs-spherical-controls": "^0.5.1"
   },
   "devDependencies": {
     "@masatomakino/gulptask-demo-page": "^0.6.0",
@@ -25,7 +25,7 @@
     "@types/jest": "^29.4.0",
     "@types/node": "^18.11.19",
     "@types/three": "^0.149.0",
-    "browser-sync": "^2.27.12",
+    "browser-sync": "^2.28.3",
     "husky": "^8.0.3",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
@@ -46,8 +46,8 @@
     "coverage": "npx jest --coverage",
     "prepare": "husky install",
     "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
-    "build": "npm run buildTS && npm run demo",
-    "demo": "npx @masatomakino/gulptask-demo-page",
+    "build": "npm run typedocs & npm run demo",
+    "demo": "npm run buildTS && npx @masatomakino/gulptask-demo-page",
     "buildTS": "tsc --project tsconfig.cjs.json & tsc --project tsconfig.esm.json",
     "typedocs": "npx typedoc --out ./docs/api src/index.ts",
     "server": "npx browser-sync ./docs/demo -w",
