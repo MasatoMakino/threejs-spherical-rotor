@@ -7,8 +7,7 @@ import {
   SphericalRotorConfig,
   SphericalRotorConfigUtil,
 } from "./";
-import { RAFTicker } from "@masatomakino/raf-ticker";
-import { RAFTickerEvent, RAFTickerEventType } from "@masatomakino/raf-ticker";
+import { RAFTicker, RAFTickerEventContext } from "@masatomakino/raf-ticker";
 
 export interface LoopOption {
   startTime?: number;
@@ -36,7 +35,7 @@ export class SphericalRotor {
 
     //横回転
     if (this._config.speed != null) {
-      RAFTicker.on(RAFTickerEventType.tick, this.rotateTheta);
+      RAFTicker.on("tick", this.rotateTheta);
     }
 
     //縦往復ループ
@@ -77,7 +76,7 @@ export class SphericalRotor {
    * カメラを横回転させる
    * 往復ではなく無限運動。
    */
-  protected rotateTheta = (e: RAFTickerEvent) => {
+  protected rotateTheta = (e: RAFTickerEventContext) => {
     if (this._config.speed == null) return;
     this.cameraController.addPosition(
       "theta",
@@ -94,7 +93,7 @@ export class SphericalRotor {
   public stop(option?: RotorStopConfig): void {
     if (!this.isRotation) return;
     this.isRotation = false;
-    RAFTicker.off(RAFTickerEventType.tick, this.rotateTheta);
+    RAFTicker.off("tick", this.rotateTheta);
     this.cameraController.tweens.stop();
 
     option = SphericalRotor.getDefaultStopParam(option);
