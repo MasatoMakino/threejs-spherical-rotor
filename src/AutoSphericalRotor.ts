@@ -1,5 +1,4 @@
 import { SleepWatcher } from "@masatomakino/threejs-drag-watcher";
-import { SleepEventType } from "@masatomakino/threejs-drag-watcher";
 import { SphericalController } from "@masatomakino/threejs-spherical-controls";
 import { RotorStopConfig, SphericalRotor, SphericalRotorConfig } from "./";
 import { LoopOption } from "./";
@@ -36,8 +35,8 @@ export class AutoSphericalRotor extends SphericalRotor {
   }
 
   private stopWatcher(): void {
-    this.sleepWatcher.removeEventListener(SleepEventType.SLEEP, this.onSleep);
-    this.sleepWatcher.removeEventListener(SleepEventType.WAKEUP, this.onWakeup);
+    this.sleepWatcher.removeEventListener("sleep", this.onSleep);
+    this.sleepWatcher.removeEventListener("wakeup", this.onWakeup);
     this.sleepWatcher.stop();
   }
 
@@ -77,8 +76,8 @@ export class AutoSphericalRotor extends SphericalRotor {
 
   private startWatcher(): void {
     this.stopWatcher();
-    this.sleepWatcher.addEventListener(SleepEventType.SLEEP, this.onSleep);
-    this.sleepWatcher.addEventListener(SleepEventType.WAKEUP, this.onWakeup);
+    this.sleepWatcher.addEventListener("sleep", this.onSleep);
+    this.sleepWatcher.addEventListener("wakeup", this.onWakeup);
     this.sleepWatcher.start();
   }
 }

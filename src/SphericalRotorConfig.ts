@@ -66,11 +66,11 @@ export class SphericalRotorConfigUtil {
       type: SphericalParamType
     ): LoopParameter | null => {
       switch (type) {
-        case SphericalParamType.PHI:
+        case "phi":
           return config.loopPhi;
-        case SphericalParamType.THETA:
+        case "theta":
           return config.loopTheta;
-        case SphericalParamType.R:
+        case "radius":
           return config.loopR;
       }
       return null;

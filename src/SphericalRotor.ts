@@ -40,11 +40,11 @@ export class SphericalRotor {
     }
 
     //縦往復ループ
-    this.startSphericalCameraLoop(SphericalParamType.PHI, option);
+    this.startSphericalCameraLoop("phi", option);
     //横往復ループ
-    this.startSphericalCameraLoop(SphericalParamType.THETA, option);
+    this.startSphericalCameraLoop("theta", option);
     //ズームインアウトループ
-    this.startSphericalCameraLoop(SphericalParamType.R, option);
+    this.startSphericalCameraLoop("radius", option);
 
     this.isRotation = true;
   }
@@ -80,7 +80,7 @@ export class SphericalRotor {
   protected rotateTheta = (e: RAFTickerEvent) => {
     if (this._config.speed == null) return;
     this.cameraController.addPosition(
-      SphericalParamType.THETA,
+      "theta",
       this._config.speed * (e.delta / (1000 / 30)),
       false,
       true
@@ -109,13 +109,9 @@ export class SphericalRotor {
    */
   protected returnToDefaultR(option?: RotorStopConfig): void {
     if (this._config?.defaultR != null && option?.returnR === true) {
-      this.cameraController.movePosition(
-        SphericalParamType.R,
-        this._config.defaultR,
-        {
-          duration: 333,
-        }
-      );
+      this.cameraController.movePosition("radius", this._config.defaultR, {
+        duration: 333,
+      });
     }
   }
 
