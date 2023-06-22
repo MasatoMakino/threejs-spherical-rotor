@@ -16,12 +16,11 @@
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@masatomakino/threejs-drag-watcher": "^0.8.0",
+    "@masatomakino/threejs-drag-watcher": "^0.8.1",
     "@masatomakino/threejs-spherical-controls": "^0.5.2"
   },
   "devDependencies": {
     "@masatomakino/gulptask-demo-page": "^0.6.7",
-    "@masatomakino/raf-ticker": "^0.5.1",
     "@tweenjs/tween.js": "^20.0.3",
     "@types/jest": "^29.5.2",
     "@types/three": "^0.152.1",
