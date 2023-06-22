@@ -2,7 +2,7 @@ import {
   SphericalController,
   SphericalParamType,
 } from "@masatomakino/threejs-spherical-controls";
-import { Camera, Mesh } from "three";
+import { PerspectiveCamera, Mesh } from "three";
 import { SphericalRotor } from "../src";
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import TWEEN, { Easing } from "@tweenjs/tween.js";
@@ -15,7 +15,10 @@ describe("SphericalRotor", () => {
   });
 
   const generateTestRotor = () => {
-    const controller = new SphericalController(new Camera(), new Mesh());
+    const controller = new SphericalController(
+      new PerspectiveCamera(),
+      new Mesh()
+    );
     const rotor = new SphericalRotor(controller);
     return { rotor, controller };
   };

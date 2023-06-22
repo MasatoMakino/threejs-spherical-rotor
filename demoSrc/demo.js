@@ -1,5 +1,5 @@
 import { Common } from "./Common";
-import { RAFTicker, RAFTickerEventType } from "@masatomakino/raf-ticker";
+import { RAFTicker } from "@masatomakino/raf-ticker";
 import { Fog, Spherical } from "three";
 import { AutoSphericalRotor } from "..";
 import { DragWatcher, SleepWatcher } from "@masatomakino/threejs-drag-watcher";
@@ -47,7 +47,7 @@ export class Demo {
       defaultR: 100,
     });
 
-    RAFTicker.on(RAFTickerEventType.tick, () => {
+    RAFTicker.on("tick", () => {
       renderer.render(scene, camera);
     });
   }
