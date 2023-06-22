@@ -3,7 +3,7 @@ import { RAFTicker } from "@masatomakino/raf-ticker";
 import { AutoSphericalRotor } from "../src";
 import { SleepWatcher, DragWatcher } from "@masatomakino/threejs-drag-watcher";
 import { SphericalController } from "@masatomakino/threejs-spherical-controls";
-import { Camera, Mesh } from "three";
+import { PerspectiveCamera, Mesh } from "three";
 
 describe("AutoSphericalRotor", () => {
   let time: number = 0;
@@ -19,7 +19,10 @@ describe("AutoSphericalRotor", () => {
   });
 
   const generateRotor = () => {
-    const cameraController = new SphericalController(new Camera(), new Mesh());
+    const cameraController = new SphericalController(
+      new PerspectiveCamera(),
+      new Mesh()
+    );
     const dragWatcher = new DragWatcher(document.createElement("canvas"));
     const sleepWatcher = new SleepWatcher(dragWatcher);
     const autoRotor = new AutoSphericalRotor(sleepWatcher, cameraController);
