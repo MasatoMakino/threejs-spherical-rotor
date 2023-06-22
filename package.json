@@ -44,6 +44,8 @@
     "test": "npx jest",
     "coverage": "npx jest --coverage",
     "prepare": "husky install",
+    "preversion": "git checkout main && git pull && npm ci && npm run test",
+    "postversion": "git add package.json package-lock.json && git checkout -b version/$(git describe --tags --abbrev=0)",
     "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
     "build": "npm run typedocs & npm run demo",
     "demo": "npm run buildTS && npx @masatomakino/gulptask-demo-page",
