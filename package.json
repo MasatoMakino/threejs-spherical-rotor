@@ -20,7 +20,7 @@
     "@masatomakino/threejs-spherical-controls": "^0.5.2"
   },
   "devDependencies": {
-    "@masatomakino/gulptask-demo-page": "^0.6.7",
+    "@masatomakino/gulptask-demo-page": "^0.7.0",
     "@tweenjs/tween.js": "^20.0.3",
     "@types/jest": "^29.5.2",
     "@types/three": "^0.154.0",
