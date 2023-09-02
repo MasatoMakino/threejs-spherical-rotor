@@ -41,7 +41,7 @@ export interface LoopParameter {
 }
 
 export class SphericalRotorConfigUtil {
-  public static init(config: SphericalRotorConfig): SphericalRotorConfig {
+  public static init(config?: SphericalRotorConfig): SphericalRotorConfig {
     config ??= {};
     config.loopPhi ??= {};
     config.loopPhi.duration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
@@ -58,26 +58,27 @@ export class SphericalRotorConfigUtil {
    * @param type
    */
   public static extractSphericalParam(
-    config: SphericalRotorConfig,
-    type: SphericalParamType
-  ): LoopParameter | null {
+    config: SphericalRotorConfig | undefined,
+    type: SphericalParamType,
+  ): Required<LoopParameter> | undefined {
     const getLoopParameter = (
-      config: SphericalRotorConfig,
-      type: SphericalParamType
-    ): LoopParameter | null => {
+      config: SphericalRotorConfig | undefined,
+      type: SphericalParamType,
+    ): LoopParameter | undefined => {
       switch (type) {
         case "phi":
-          return config.loopPhi;
+          return config?.loopPhi;
         case "theta":
-          return config.loopTheta;
+          return config?.loopTheta;
         case "radius":
-          return config.loopR;
+          return config?.loopR;
       }
-      return null;
+      return undefined;
     };
 
     const param = getLoopParameter(config, type);
-    if (param == null || param.max == null || param.min == null) return null;
-    return param;
+    if (param == null || param.max == null || param.min == null)
+      return undefined;
+    return param as Required<LoopParameter>;
   }
 }
