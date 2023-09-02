@@ -58,20 +58,20 @@ export class SphericalRotorConfigUtil {
    * @param type
    */
   public static extractSphericalParam(
-    config: SphericalRotorConfig,
+    config: SphericalRotorConfig | undefined,
     type: SphericalParamType,
   ): Required<LoopParameter> | undefined {
     const getLoopParameter = (
-      config: SphericalRotorConfig,
+      config: SphericalRotorConfig | undefined,
       type: SphericalParamType,
     ): LoopParameter | undefined => {
       switch (type) {
         case "phi":
-          return config.loopPhi;
+          return config?.loopPhi;
         case "theta":
-          return config.loopTheta;
+          return config?.loopTheta;
         case "radius":
-          return config.loopR;
+          return config?.loopR;
       }
       return undefined;
     };

@@ -13,7 +13,7 @@ export interface LoopOption {
   startTime?: number;
 }
 export class SphericalRotor {
-  protected _config: SphericalRotorConfig;
+  protected _config?: SphericalRotorConfig;
   private isRotation: boolean = false;
 
   constructor(private cameraController: SphericalController) {}
@@ -35,7 +35,7 @@ export class SphericalRotor {
     }
 
     //横回転
-    if (this._config.speed != null) {
+    if (this._config?.speed != null) {
       RAFTicker.on("tick", this.rotateTheta);
     }
 
@@ -78,7 +78,7 @@ export class SphericalRotor {
    * 往復ではなく無限運動。
    */
   protected rotateTheta = (e: RAFTickerEventContext) => {
-    if (this._config.speed == null) return;
+    if (this._config?.speed == null) return;
     this.cameraController.addPosition(
       "theta",
       this._config.speed * (e.delta / (1000 / 30)),
