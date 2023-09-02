@@ -3,7 +3,7 @@ import { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
 
 describe("SphericalRotorConfig", () => {
   test("init", () => {
-    const config = SphericalRotorConfigUtil.init(null);
+    const config = SphericalRotorConfigUtil.init(undefined);
     expect(config.loopPhi).toBeTruthy();
     expect(config.loopTheta).toBeTruthy();
     expect(config.loopR).toBeTruthy();
@@ -22,9 +22,9 @@ describe("SphericalRotorConfig", () => {
       },
     });
 
-    expect(config.loopPhi.duration).toBe(1);
-    expect(config.loopTheta.duration).toBe(2);
-    expect(config.loopR.duration).toBe(3);
+    expect(config.loopPhi?.duration).toBe(1);
+    expect(config.loopTheta?.duration).toBe(2);
+    expect(config.loopR?.duration).toBe(3);
   });
 
   test("extractParam", () => {
@@ -42,17 +42,17 @@ describe("SphericalRotorConfig", () => {
         }
       };
 
-      const paramNull = SphericalRotorConfigUtil.extractSphericalParam(
+      const paramUndefined = SphericalRotorConfigUtil.extractSphericalParam(
         config,
-        type
+        type,
       );
-      expect(paramNull).toBeNull();
+      expect(paramUndefined).toBeUndefined();
 
-      config[getLoopType(type)].max = 1;
-      config[getLoopType(type)].min = 1;
+      config[getLoopType(type)]!.max = 1;
+      config[getLoopType(type)]!.min = 1;
       const param = SphericalRotorConfigUtil.extractSphericalParam(
         config,
-        type
+        type,
       );
       expect(param).toBeTruthy();
     };

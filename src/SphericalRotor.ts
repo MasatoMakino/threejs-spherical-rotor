@@ -18,7 +18,8 @@ export class SphericalRotor {
 
   constructor(private cameraController: SphericalController) {}
 
-  set config(parameters: SphericalRotorConfig) {
+  set config(parameters: SphericalRotorConfig | undefined) {
+    if (parameters == null) return;
     this._config = SphericalRotorConfigUtil.init(parameters);
   }
 
@@ -58,11 +59,11 @@ export class SphericalRotor {
    */
   private startSphericalCameraLoop(
     type: SphericalParamType,
-    option?: LoopOption
+    option?: LoopOption,
   ): void {
     const loop = SphericalRotorConfigUtil.extractSphericalParam(
       this._config,
-      type
+      type,
     );
     if (loop == null) return;
 
@@ -82,7 +83,7 @@ export class SphericalRotor {
       "theta",
       this._config.speed * (e.delta / (1000 / 30)),
       false,
-      true
+      true,
     );
   };
 
@@ -114,7 +115,7 @@ export class SphericalRotor {
     }
   }
 
-  public static getDefaultStopParam(option: RotorStopConfig): RotorStopConfig {
+  public static getDefaultStopParam(option?: RotorStopConfig): RotorStopConfig {
     option ??= {};
     option.returnR ??= true;
     return option;

@@ -2,7 +2,14 @@
   "compilerOptions": {
     "target": "ES5",
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
   },
   "include": ["src/**/*"]
 }
