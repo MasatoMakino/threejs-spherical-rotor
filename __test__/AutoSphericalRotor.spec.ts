@@ -1,6 +1,6 @@
 import TWEEN, { Easing } from "@tweenjs/tween.js";
 import { RAFTicker } from "@masatomakino/raf-ticker";
-import { AutoSphericalRotor } from "../src";
+import { AutoSphericalRotor } from "../src/index.js";
 import { SleepWatcher, DragWatcher } from "@masatomakino/threejs-drag-watcher";
 import { SphericalController } from "@masatomakino/threejs-spherical-controls";
 import { PerspectiveCamera, Mesh } from "three";
@@ -21,7 +21,7 @@ describe("AutoSphericalRotor", () => {
   const generateRotor = () => {
     const cameraController = new SphericalController(
       new PerspectiveCamera(),
-      new Mesh()
+      new Mesh(),
     );
     const dragWatcher = new DragWatcher(document.createElement("canvas"));
     const sleepWatcher = new SleepWatcher(dragWatcher);
@@ -52,14 +52,14 @@ describe("AutoSphericalRotor", () => {
     const defaultTimeout = 10 * 1000;
     autoRotor.watch(
       { loopR: { max: 2, min: 1, duration: 1000 } },
-      { startTime: defaultTimeout }
+      { startTime: defaultTimeout },
     );
     cameraController.tweens.loopEasing = Easing.Linear.None;
 
     const advanceTimer = (delta: number, position: number) => {
       tick(delta);
       expect(cameraController.cloneSphericalPosition().radius).toBeCloseTo(
-        position
+        position,
       );
     };
 

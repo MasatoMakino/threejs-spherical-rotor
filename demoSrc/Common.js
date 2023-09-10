@@ -9,7 +9,7 @@ import {
   WebGLRenderer,
   Mesh,
 } from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export class Common {
   static initScene() {
@@ -46,7 +46,7 @@ export class Common {
         color: 0x000000,
         antialias: true,
       },
-      option
+      option,
     );
 
     const renderer = new WebGLRenderer({
@@ -64,7 +64,7 @@ export class Common {
     scene.add(axesHelper);
     const cone = new Mesh(
       new ConeGeometry(5, 10, 16),
-      new MeshBasicMaterial({ wireframe: true })
+      new MeshBasicMaterial({ wireframe: true }),
     );
     scene.add(cone);
     return axesHelper;

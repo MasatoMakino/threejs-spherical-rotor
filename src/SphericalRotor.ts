@@ -2,13 +2,12 @@ import {
   SphericalController,
   SphericalParamType,
 } from "@masatomakino/threejs-spherical-controls";
+import { RAFTicker, RAFTickerEventContext } from "@masatomakino/raf-ticker";
 import {
   RotorStopConfig,
   SphericalRotorConfig,
   SphericalRotorConfigUtil,
-} from "./";
-import { RAFTicker, RAFTickerEventContext } from "@masatomakino/raf-ticker";
-
+} from "./index.js";
 export interface LoopOption {
   startTime?: number;
 }

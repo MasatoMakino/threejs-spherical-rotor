@@ -1,7 +1,7 @@
-import { Common } from "./Common";
+import { Common } from "./Common.js";
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import { Fog, Spherical } from "three";
-import { AutoSphericalRotor } from "..";
+import { AutoSphericalRotor } from "../esm/index.js";
 import { DragWatcher, SleepWatcher } from "@masatomakino/threejs-drag-watcher";
 import {
   SphericalController,

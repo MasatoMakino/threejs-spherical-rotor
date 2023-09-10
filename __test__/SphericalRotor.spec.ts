@@ -3,7 +3,7 @@ import {
   SphericalParamType,
 } from "@masatomakino/threejs-spherical-controls";
 import { PerspectiveCamera, Mesh } from "three";
-import { SphericalRotor } from "../src";
+import { SphericalRotor } from "../src/index.js";
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import TWEEN, { Easing } from "@tweenjs/tween.js";
 
@@ -17,7 +17,7 @@ describe("SphericalRotor", () => {
   const generateTestRotor = () => {
     const controller = new SphericalController(
       new PerspectiveCamera(),
-      new Mesh()
+      new Mesh(),
     );
     const rotor = new SphericalRotor(controller);
     return { rotor, controller };
@@ -26,7 +26,7 @@ describe("SphericalRotor", () => {
     controller: SphericalController,
     time: number,
     type: SphericalParamType,
-    position: number
+    position: number,
   ) => {
     RAFTicker.emitTickEvent(time);
     const cameraPos = controller.cloneSphericalPosition();
