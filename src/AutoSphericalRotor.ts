@@ -1,7 +1,11 @@
 import { SleepWatcher } from "@masatomakino/threejs-drag-watcher";
 import { SphericalController } from "@masatomakino/threejs-spherical-controls";
-import { RotorStopConfig, SphericalRotor, SphericalRotorConfig } from "./";
-import { LoopOption } from "./";
+import {
+  RotorStopConfig,
+  SphericalRotor,
+  SphericalRotorConfig,
+  LoopOption,
+} from "./index.js";
 
 /**
  * マウス操作を監視し、回転を制御するクラス。
@@ -15,7 +19,7 @@ export class AutoSphericalRotor extends SphericalRotor {
 
   constructor(
     private sleepWatcher: SleepWatcher,
-    cameraController: SphericalController
+    cameraController: SphericalController,
   ) {
     super(cameraController);
   }
@@ -58,7 +62,7 @@ export class AutoSphericalRotor extends SphericalRotor {
    */
   public watch(
     parameters?: SphericalRotorConfig,
-    loopOption?: LoopOption
+    loopOption?: LoopOption,
   ): void {
     this.config = parameters;
     this.loopOption = loopOption;

@@ -1,4 +1,4 @@
-import { SphericalRotorConfigUtil } from "../src";
+import { SphericalRotorConfigUtil } from "../src/index.js";
 import { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
 
 describe("SphericalRotorConfig", () => {

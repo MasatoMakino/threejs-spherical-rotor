@@ -1,5 +1,5 @@
-import { AutoSphericalRotor } from "./";
 import { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
+import { AutoSphericalRotor } from "./index.js";
 
 /**
  * 回転の動作を指定する。
