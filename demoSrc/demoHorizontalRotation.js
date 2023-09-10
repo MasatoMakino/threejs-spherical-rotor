@@ -1,4 +1,4 @@
-import { Common } from "./Common";
+import { Common } from "./Common.js";
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import { Fog, Spherical } from "three";
 import { AutoSphericalRotor } from "../esm/index.js";

@@ -50,7 +50,7 @@
     "postversion": "git add package.json package-lock.json && git checkout -b version/$(git describe --tags --abbrev=0)",
     "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
     "build": "npm run typedocs & npm run demo",
-    "demo": "npm run buildTS && npx @masatomakino/gulptask-demo-page",
+    "demo": "npm run buildTS && npx @masatomakino/gulptask-demo-page --compileModule es2020",
     "buildTS": "tsc",
     "typedocs": "npx typedoc --out ./docs/api src/index.ts",
     "server": "npx browser-sync ./docs/demo -w",
