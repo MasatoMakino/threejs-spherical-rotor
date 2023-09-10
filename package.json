@@ -1,11 +1,17 @@
 {
   "name": "@masatomakino/threejs-spherical-rotor",
   "version": "0.7.1",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "module": "./esm/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.js"
+      }
+    }
+  },
+  "types": "./esm/index.d.ts",
   "files": [
-    "lib",
     "esm"
   ],
   "description": "Loop rotation plugin for threejs-spherical-controls.",
@@ -16,11 +22,9 @@
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@masatomakino/threejs-spherical-controls": "^0.6.0",
+    "@masatomakino/threejs-spherical-controls": "^0.6.1",
+    "@masatomakino/threejs-drag-watcher": "^0.8.3",
     "three": ">=0.126.0 <1.0.0"
-  },
-  "dependencies": {
-    "@masatomakino/threejs-drag-watcher": "^0.8.1"
   },
   "devDependencies": {
     "@masatomakino/gulptask-demo-page": "^0.7.0",
@@ -47,11 +51,11 @@
     "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
     "build": "npm run typedocs & npm run demo",
     "demo": "npm run buildTS && npx @masatomakino/gulptask-demo-page",
-    "buildTS": "tsc --project tsconfig.cjs.json & tsc --project tsconfig.esm.json",
+    "buildTS": "tsc",
     "typedocs": "npx typedoc --out ./docs/api src/index.ts",
     "server": "npx browser-sync ./docs/demo -w",
     "watch:demo": "npm run demo -- -W",
-    "watch:tsc": "tsc -W --incremental --project tsconfig.cjs.json & tsc -W --incremental --project tsconfig.esm.json"
+    "watch:tsc": "tsc -W --incremental"
   },
   "bugs": {
     "url": "https://github.com/MasatoMakino/threejs-spherical-rotor/issues"
@@ -59,7 +63,7 @@
   "homepage": "https://github.com/MasatoMakino/threejs-spherical-rotor#readme",
   "directories": {
     "doc": "docs",
-    "lib": "lib"
+    "lib": "esm"
   },
   "lint-staged": {
     "*.{js,ts,css,md}": "prettier --write"
