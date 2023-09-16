@@ -22,8 +22,8 @@
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@masatomakino/threejs-spherical-controls": "^0.6.1",
     "@masatomakino/threejs-drag-watcher": "^0.8.3",
+    "@masatomakino/threejs-spherical-controls": "^0.7.0",
     "three": ">=0.126.0 <1.0.0"
   },
   "devDependencies": {

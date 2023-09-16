@@ -15,6 +15,9 @@ const jestConfig = {
       },
     ],
   },
+  transformIgnorePatterns: [
+    "node_modules/(?!(@masatomakino/threejs-spherical-controls)/)",
+  ],
 };
 
 export default jestConfig;
