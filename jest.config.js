@@ -1,3 +1,12 @@
+/**
+ * transformが必要なPure ESMのパッケージ。
+ * @type {string[]}
+ */
+const ignorePackages = [
+  "@masatomakino/threejs-spherical-controls",
+  "@masatomakino/threejs-drag-watcher",
+];
+
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 const jestConfig = {
   preset: "ts-jest",
@@ -15,9 +24,7 @@ const jestConfig = {
       },
     ],
   },
-  transformIgnorePatterns: [
-    "node_modules/(?!(@masatomakino/threejs-spherical-controls)/)",
-  ],
+  transformIgnorePatterns: [`node_modules/(?!(${ignorePackages.join("|")})/)`],
 };
 
 export default jestConfig;
