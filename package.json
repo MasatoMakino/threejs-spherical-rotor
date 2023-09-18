@@ -23,7 +23,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@masatomakino/threejs-drag-watcher": "^0.9.0",
-    "@masatomakino/threejs-spherical-controls": "^0.7.0",
+    "@masatomakino/threejs-spherical-controls": "^0.7.1",
     "three": ">=0.126.0 <1.0.0"
   },
   "devDependencies": {
