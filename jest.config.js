@@ -3,6 +3,7 @@
  * @type {string[]}
  */
 const ignorePackages = [
+  "@masatomakino/tween.js-ticker",
   "@masatomakino/threejs-spherical-controls",
   "@masatomakino/threejs-drag-watcher",
 ];
