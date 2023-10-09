@@ -39,8 +39,8 @@ export class AutoSphericalRotor extends SphericalRotor {
   }
 
   private stopWatcher(): void {
-    this.sleepWatcher.removeEventListener("sleep", this.onSleep);
-    this.sleepWatcher.removeEventListener("wakeup", this.onWakeup);
+    this.sleepWatcher.off("sleep", this.onSleep);
+    this.sleepWatcher.off("wakeup", this.onWakeup);
     this.sleepWatcher.stop();
   }
 
@@ -80,8 +80,8 @@ export class AutoSphericalRotor extends SphericalRotor {
 
   private startWatcher(): void {
     this.stopWatcher();
-    this.sleepWatcher.addEventListener("sleep", this.onSleep);
-    this.sleepWatcher.addEventListener("wakeup", this.onWakeup);
+    this.sleepWatcher.on("sleep", this.onSleep);
+    this.sleepWatcher.on("wakeup", this.onWakeup);
     this.sleepWatcher.start();
   }
 }
