@@ -31,7 +31,7 @@
     "three": ">=0.126.0 <1.0.0"
   },
   "devDependencies": {
-    "@masatomakino/gulptask-demo-page": "^0.7.4",
+    "@masatomakino/gulptask-demo-page": "^0.8.0",
     "@types/jest": "^29.5.2",
     "@types/three": "^0.159.0",
     "browser-sync": "^2.29.3",
