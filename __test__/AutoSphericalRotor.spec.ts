@@ -1,9 +1,10 @@
-import TWEEN, { Easing } from "@tweenjs/tween.js";
 import { RAFTicker } from "@masatomakino/raf-ticker";
-import { AutoSphericalRotor } from "../src/index.js";
-import { SleepWatcher, DragWatcher } from "@masatomakino/threejs-drag-watcher";
+import { DragWatcher, SleepWatcher } from "@masatomakino/threejs-drag-watcher";
 import { SphericalController } from "@masatomakino/threejs-spherical-controls";
-import { PerspectiveCamera, Mesh } from "three";
+import TWEEN, { Easing } from "@tweenjs/tween.js";
+import { Mesh, PerspectiveCamera } from "three";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { AutoSphericalRotor } from "../src/index.js";
 
 describe("AutoSphericalRotor", () => {
   let time: number = 0;
@@ -12,10 +13,10 @@ describe("AutoSphericalRotor", () => {
     TWEEN.removeAll();
     RAFTicker.stop();
     RAFTicker.emitTickEvent(0);
-    jest.useFakeTimers();
+    vi.useFakeTimers();
   });
   afterEach(() => {
-    jest.clearAllTimers();
+    vi.clearAllTimers();
   });
 
   const generateRotor = () => {
@@ -35,7 +36,7 @@ describe("AutoSphericalRotor", () => {
 
   const tick = (delta: number) => {
     time += delta;
-    jest.advanceTimersByTime(delta);
+    vi.advanceTimersByTime(delta);
     RAFTicker.emitTickEvent(time);
   };
 
