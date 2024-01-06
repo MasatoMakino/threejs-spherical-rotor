@@ -1,5 +1,6 @@
-import { SphericalRotorConfigUtil } from "../src/index.js";
 import { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
+import { describe, expect, test } from "vitest";
+import { SphericalRotorConfigUtil } from "../src/index.js";
 
 describe("SphericalRotorConfig", () => {
   test("init", () => {
