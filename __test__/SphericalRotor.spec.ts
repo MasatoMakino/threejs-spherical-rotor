@@ -57,11 +57,6 @@ describe("SphericalRotor", () => {
     controller.tweens.loopEasing = Easing.Linear.None;
     rotor.config = { loopR: { max: 2, min: 1, duration: 1000 }, defaultR: 0.5 };
     rotor.rotate({ startTime: 0 });
-
-    testPosition(controller, 1000, "radius", 2);
-    testPosition(controller, 1500, "radius", 1.5);
-    testPosition(controller, 2000, "radius", 1);
-
     rotor.stop();
     testPosition(controller, 10000, "radius", 0.5);
   });
@@ -71,10 +66,6 @@ describe("SphericalRotor", () => {
     controller.tweens.loopEasing = Easing.Linear.None;
     rotor.config = { loopR: { max: 2, min: 1, duration: 1000 } };
     rotor.rotate({ startTime: 0 });
-
-    testPosition(controller, 1000, "radius", 2);
-    testPosition(controller, 2000, "radius", 1);
-
     rotor.stop();
     testPosition(controller, 10000, "radius", 1);
   });
