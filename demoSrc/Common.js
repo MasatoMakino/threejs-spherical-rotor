@@ -8,6 +8,7 @@ import {
   Scene,
   WebGLRenderer,
   Mesh,
+  REVISION,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
@@ -56,6 +57,7 @@ export class Common {
     renderer.setClearColor(new Color(option.color));
     renderer.setSize(W, H);
     renderer.setPixelRatio(window.devicePixelRatio);
+    console.log(`three.js r${REVISION}`);
     return renderer;
   }
 
