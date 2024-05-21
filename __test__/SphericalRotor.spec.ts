@@ -70,7 +70,7 @@ describe("SphericalRotor", () => {
     rotor.stop();
     testPosition(
       controller,
-      10000,
+      100_000,
       "radius",
       config.defaultR,
       "stop, radius to defaultR",
