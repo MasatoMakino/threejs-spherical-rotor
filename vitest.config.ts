@@ -9,6 +9,7 @@ export default defineConfig({
         resources: "usable",
       },
     },
+    pool: "forks",
     coverage: {
       provider: "istanbul",
       reporter: ["text", "lcov"],
