@@ -28,10 +28,11 @@ describe("SphericalRotor", () => {
     time: number,
     type: SphericalParamType,
     position: number,
+    message?: string,
   ) => {
     RAFTicker.emitTickEvent(time);
     const cameraPos = controller.cloneSphericalPosition();
-    expect(cameraPos[type]).toBeCloseTo(position);
+    expect(cameraPos[type], message).toBeCloseTo(position);
   };
 
   test("constructor", () => {
@@ -55,15 +56,25 @@ describe("SphericalRotor", () => {
   test("rotate and stop", () => {
     const { controller, rotor } = generateTestRotor();
     controller.tweens.loopEasing = Easing.Linear.None;
-    rotor.config = { loopR: { max: 2, min: 1, duration: 1000 }, defaultR: 0.5 };
+    const config = {
+      loopR: { max: 2, min: 1, duration: 1000 },
+      defaultR: 0.5,
+    };
+    rotor.config = config;
     rotor.rotate({ startTime: 0 });
 
-    testPosition(controller, 1000, "radius", 2);
-    testPosition(controller, 1500, "radius", 1.5);
-    testPosition(controller, 2000, "radius", 1);
+    testPosition(controller, 1000, "radius", config.loopR.max, "radius to max");
+    testPosition(controller, 1500, "radius", 1.5, "radius to max to min");
+    testPosition(controller, 2000, "radius", config.loopR.min, "radius to min");
 
     rotor.stop();
-    testPosition(controller, 10000, "radius", 0.5);
+    testPosition(
+      controller,
+      100_000,
+      "radius",
+      config.defaultR,
+      "stop, radius to defaultR",
+    );
   });
 
   test("rotate and stop without default radius", () => {
