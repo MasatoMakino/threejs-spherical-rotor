@@ -3,14 +3,13 @@ import {
   SphericalController,
   SphericalParamType,
 } from "@masatomakino/threejs-spherical-controls";
-import TWEEN, { Easing } from "@tweenjs/tween.js";
+import { Easing } from "@tweenjs/tween.js";
 import { Mesh, PerspectiveCamera } from "three";
 import { beforeEach, describe, expect, test } from "vitest";
 import { SphericalRotor } from "../src/index.js";
 
 describe("SphericalRotor", () => {
   beforeEach(() => {
-    TWEEN.removeAll();
     RAFTicker.stop();
     RAFTicker.emitTickEvent(0);
   });

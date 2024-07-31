@@ -1,7 +1,7 @@
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import { DragWatcher, SleepWatcher } from "@masatomakino/threejs-drag-watcher";
 import { SphericalController } from "@masatomakino/threejs-spherical-controls";
-import TWEEN, { Easing } from "@tweenjs/tween.js";
+import { Easing } from "@tweenjs/tween.js";
 import { Mesh, PerspectiveCamera } from "three";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { AutoSphericalRotor } from "../src/index.js";
@@ -10,7 +10,6 @@ describe("AutoSphericalRotor", () => {
   let time: number = 0;
   beforeEach(() => {
     time = 0;
-    TWEEN.removeAll();
     RAFTicker.stop();
     RAFTicker.emitTickEvent(0);
     vi.useFakeTimers();
