@@ -26,11 +26,13 @@
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@masatomakino/threejs-drag-watcher": "0.10.1 - 0.12.x",
+    "@masatomakino/threejs-drag-watcher": "0.10.1 - 0.13.x",
     "@masatomakino/threejs-spherical-controls": "^0.10.0",
     "three": ">=0.126.0 <1.0.0"
   },
   "devDependencies": {
+    "@masatomakino/threejs-drag-watcher": "^0.13.0",
+    "@masatomakino/threejs-spherical-controls": "^0.10.1",
     "@masatomakino/gulptask-demo-page": "^0.8.3",
     "@types/three": "^0.169.0",
     "@types/webxr": "^0.5.19",
