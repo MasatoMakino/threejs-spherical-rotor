@@ -34,7 +34,7 @@
     "@masatomakino/threejs-drag-watcher": "^0.13.0",
     "@masatomakino/threejs-spherical-controls": "^0.10.1",
     "@masatomakino/gulptask-demo-page": "^0.8.3",
-    "@types/three": "^0.172.0",
+    "@types/three": "^0.173.0",
     "@types/webxr": "^0.5.19",
     "@vitest/coverage-istanbul": "^3.0.2",
     "browser-sync": "^3.0.2",
