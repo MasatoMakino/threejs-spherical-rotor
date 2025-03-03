@@ -34,7 +34,7 @@
     "@masatomakino/threejs-drag-watcher": "^0.13.0",
     "@masatomakino/threejs-spherical-controls": "^0.10.1",
     "@masatomakino/gulptask-demo-page": "^0.8.3",
-    "@types/three": "^0.173.0",
+    "@types/three": "^0.174.0",
     "@types/webxr": "^0.5.19",
     "@vitest/coverage-istanbul": "^3.0.2",
     "browser-sync": "^3.0.2",
@@ -42,7 +42,7 @@
     "jsdom": "^26.0.0",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.3",
-    "three": "^0.173.0",
+    "three": "^0.174.0",
     "typedoc": "^0.27.0",
     "typescript": "^5.5.4"
   },
