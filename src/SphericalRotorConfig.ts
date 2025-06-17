@@ -46,7 +46,7 @@ export interface LoopParameter {
 export function initConfig(
   config?: SphericalRotorConfig,
 ): SphericalRotorConfig {
-  const result = config ?? {};
+  const result = config ? { ...config } : {};
   result.loopPhi ??= {};
   result.loopPhi.duration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
   result.loopTheta ??= {};
@@ -77,10 +77,15 @@ export function extractSphericalParam(
       case "radius":
         return config?.loopR;
     }
-    return undefined;
   };
 
   const param = getLoopParameter(config, type);
-  if (param == null || param.max == null || param.min == null) return undefined;
+  if (
+    param == null ||
+    param.max == null ||
+    param.min == null ||
+    param.duration == null
+  )
+    return undefined;
   return param as Required<LoopParameter>;
 }
