@@ -1,1 +1,2 @@
+npx @biomejs/biome ci .
 npm test

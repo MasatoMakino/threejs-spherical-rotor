@@ -1,4 +1,10 @@
-import { Common } from "./Common.js";
+import {
+  createScene,
+  createLight,
+  createCamera,
+  createRenderer,
+  createHelper,
+} from "./Common.js";
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import { Fog, Spherical } from "three";
 import { AutoSphericalRotor } from "../esm/index.js";
@@ -14,13 +20,13 @@ export class Demo {
     const W = 640;
     const H = 480;
 
-    scene = Common.initScene();
+    scene = createScene();
     scene.fog = new Fog(0x000000, 80, 160);
-    Common.initLight(scene);
-    const camera = Common.initCamera(scene, W, H);
-    const renderer = Common.initRenderer(W, H, { antialias: false });
+    createLight(scene);
+    const camera = createCamera(scene, W, H);
+    const renderer = createRenderer(W, H, { antialias: false });
 
-    Common.initHelper(scene);
+    createHelper(scene);
 
     const target = SphericalControllerUtil.generateCameraTarget();
     scene.add(target);

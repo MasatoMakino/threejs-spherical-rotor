@@ -1,25 +1,29 @@
-import {
+import type {
   SphericalController,
   SphericalParamType,
 } from "@masatomakino/threejs-spherical-controls";
-import { RAFTicker, RAFTickerEventContext } from "@masatomakino/raf-ticker";
 import {
-  RotorStopConfig,
-  SphericalRotorConfig,
-  SphericalRotorConfigUtil,
+  RAFTicker,
+  type RAFTickerEventContext,
+} from "@masatomakino/raf-ticker";
+import {
+  type RotorStopConfig,
+  type SphericalRotorConfig,
+  initConfig,
+  extractSphericalParam,
 } from "./index.js";
 export interface LoopOption {
   startTime?: number;
 }
 export class SphericalRotor {
   protected _config?: SphericalRotorConfig;
-  private isRotation: boolean = false;
+  private isRotation = false;
 
   constructor(private cameraController: SphericalController) {}
 
   set config(parameters: SphericalRotorConfig | undefined) {
     if (parameters == null) return;
-    this._config = SphericalRotorConfigUtil.init(parameters);
+    this._config = initConfig(parameters);
   }
 
   /**
@@ -60,10 +64,7 @@ export class SphericalRotor {
     type: SphericalParamType,
     option?: LoopOption,
   ): void {
-    const loop = SphericalRotorConfigUtil.extractSphericalParam(
-      this._config,
-      type,
-    );
+    const loop = extractSphericalParam(this._config, type);
     if (loop == null) return;
 
     this.cameraController.loop(type, loop.min, loop.max, {
@@ -96,9 +97,9 @@ export class SphericalRotor {
     RAFTicker.off("tick", this.rotateTheta);
     this.cameraController.tweens.stop();
 
-    option = SphericalRotor.getDefaultStopParam(option);
+    const stopOptions = SphericalRotor.getDefaultStopParam(option);
 
-    this.returnToDefaultR(option);
+    this.returnToDefaultR(stopOptions);
   }
 
   /**
@@ -115,8 +116,8 @@ export class SphericalRotor {
   }
 
   public static getDefaultStopParam(option?: RotorStopConfig): RotorStopConfig {
-    option ??= {};
-    option.returnR ??= true;
-    return option;
+    const defaults: RotorStopConfig = option ? { ...option } : {};
+    defaults.returnR ??= true;
+    return defaults;
   }
 }
