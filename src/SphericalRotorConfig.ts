@@ -1,4 +1,4 @@
-import { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
+import type { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
 import { AutoSphericalRotor } from "./index.js";
 
 /**
@@ -40,45 +40,47 @@ export interface LoopParameter {
   duration?: number; //単位ms
 }
 
-export class SphericalRotorConfigUtil {
-  public static init(config?: SphericalRotorConfig): SphericalRotorConfig {
-    config ??= {};
-    config.loopPhi ??= {};
-    config.loopPhi.duration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
-    config.loopTheta ??= {};
-    config.loopTheta.duration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
-    config.loopR ??= {};
-    config.loopR.duration ??= AutoSphericalRotor.DEFAULT_LOOP_R_DURATION;
-    return config;
-  }
+/**
+ * Initialize a SphericalRotorConfig with default values
+ */
+export function initConfig(
+  config?: SphericalRotorConfig,
+): SphericalRotorConfig {
+  const result = config ?? {};
+  result.loopPhi ??= {};
+  result.loopPhi.duration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
+  result.loopTheta ??= {};
+  result.loopTheta.duration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
+  result.loopR ??= {};
+  result.loopR.duration ??= AutoSphericalRotor.DEFAULT_LOOP_R_DURATION;
+  return result;
+}
 
-  /**
-   * ループアニメーションに必要な情報を、configオブジェクトから取り出す。
-   * @param config
-   * @param type
-   */
-  public static extractSphericalParam(
+/**
+ * ループアニメーションに必要な情報を、configオブジェクトから取り出す。
+ * @param config
+ * @param type
+ */
+export function extractSphericalParam(
+  config: SphericalRotorConfig | undefined,
+  type: SphericalParamType,
+): Required<LoopParameter> | undefined {
+  const getLoopParameter = (
     config: SphericalRotorConfig | undefined,
     type: SphericalParamType,
-  ): Required<LoopParameter> | undefined {
-    const getLoopParameter = (
-      config: SphericalRotorConfig | undefined,
-      type: SphericalParamType,
-    ): LoopParameter | undefined => {
-      switch (type) {
-        case "phi":
-          return config?.loopPhi;
-        case "theta":
-          return config?.loopTheta;
-        case "radius":
-          return config?.loopR;
-      }
-      return undefined;
-    };
+  ): LoopParameter | undefined => {
+    switch (type) {
+      case "phi":
+        return config?.loopPhi;
+      case "theta":
+        return config?.loopTheta;
+      case "radius":
+        return config?.loopR;
+    }
+    return undefined;
+  };
 
-    const param = getLoopParameter(config, type);
-    if (param == null || param.max == null || param.min == null)
-      return undefined;
-    return param as Required<LoopParameter>;
-  }
+  const param = getLoopParameter(config, type);
+  if (param == null || param.max == null || param.min == null) return undefined;
+  return param as Required<LoopParameter>;
 }

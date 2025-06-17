@@ -1,7 +1,7 @@
 import { RAFTicker } from "@masatomakino/raf-ticker";
 import {
   SphericalController,
-  SphericalParamType,
+  type SphericalParamType,
 } from "@masatomakino/threejs-spherical-controls";
 import { Easing } from "@tweenjs/tween.js";
 import { Mesh, PerspectiveCamera } from "three";

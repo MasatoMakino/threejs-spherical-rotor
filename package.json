@@ -15,9 +15,7 @@
     }
   },
   "types": "./esm/index.d.ts",
-  "files": [
-    "esm"
-  ],
+  "files": ["esm"],
   "description": "Loop rotation plugin for threejs-spherical-controls.",
   "repository": {
     "type": "git",

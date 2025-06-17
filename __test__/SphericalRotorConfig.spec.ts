@@ -1,17 +1,17 @@
-import { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
+import type { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
 import { describe, expect, test } from "vitest";
-import { SphericalRotorConfigUtil } from "../src/index.js";
+import { initConfig, extractSphericalParam } from "../src/index.js";
 
 describe("SphericalRotorConfig", () => {
   test("init", () => {
-    const config = SphericalRotorConfigUtil.init(undefined);
+    const config = initConfig(undefined);
     expect(config.loopPhi).toBeTruthy();
     expect(config.loopTheta).toBeTruthy();
     expect(config.loopR).toBeTruthy();
   });
 
   test("init with params", () => {
-    const config = SphericalRotorConfigUtil.init({
+    const config = initConfig({
       loopPhi: {
         duration: 1,
       },
@@ -29,7 +29,7 @@ describe("SphericalRotorConfig", () => {
   });
 
   test("extractParam", () => {
-    const config = SphericalRotorConfigUtil.init({});
+    const config = initConfig({});
 
     const testParam = (type: SphericalParamType) => {
       const getLoopType = (type: SphericalParamType) => {
@@ -43,18 +43,15 @@ describe("SphericalRotorConfig", () => {
         }
       };
 
-      const paramUndefined = SphericalRotorConfigUtil.extractSphericalParam(
-        config,
-        type,
-      );
+      const paramUndefined = extractSphericalParam(config, type);
       expect(paramUndefined).toBeUndefined();
 
-      config[getLoopType(type)]!.max = 1;
-      config[getLoopType(type)]!.min = 1;
-      const param = SphericalRotorConfigUtil.extractSphericalParam(
-        config,
-        type,
-      );
+      const loopType = getLoopType(type);
+      if (config[loopType]) {
+        config[loopType].max = 1;
+        config[loopType].min = 1;
+      }
+      const param = extractSphericalParam(config, type);
       expect(param).toBeTruthy();
     };
 

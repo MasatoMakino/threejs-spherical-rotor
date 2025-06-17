@@ -7,7 +7,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { AutoSphericalRotor } from "../src/index.js";
 
 describe("AutoSphericalRotor", () => {
-  let time: number = 0;
+  let time = 0;
   beforeEach(() => {
     time = 0;
     RAFTicker.stop();

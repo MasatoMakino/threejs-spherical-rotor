@@ -1,10 +1,10 @@
-import { SleepWatcher } from "@masatomakino/threejs-drag-watcher";
-import { SphericalController } from "@masatomakino/threejs-spherical-controls";
+import type { SleepWatcher } from "@masatomakino/threejs-drag-watcher";
+import type { SphericalController } from "@masatomakino/threejs-spherical-controls";
 import {
-  RotorStopConfig,
+  type RotorStopConfig,
   SphericalRotor,
-  SphericalRotorConfig,
-  LoopOption,
+  type SphericalRotorConfig,
+  type LoopOption,
 } from "./index.js";
 
 /**
@@ -12,10 +12,10 @@ import {
  * マウスが無操作の場合、回転を始め、操作が再開されると停止する。
  */
 export class AutoSphericalRotor extends SphericalRotor {
-  private isStart: boolean = false;
+  private isStart = false;
   private loopOption?: LoopOption;
-  public static readonly DEFAULT_LOOP_LAT_DURATION: number = 30 * 1000;
-  public static readonly DEFAULT_LOOP_R_DURATION: number = 30 * 1000;
+  public static readonly DEFAULT_LOOP_LAT_DURATION = 30 * 1000;
+  public static readonly DEFAULT_LOOP_R_DURATION = 30 * 1000;
 
   constructor(
     private sleepWatcher: SleepWatcher,
@@ -32,10 +32,10 @@ export class AutoSphericalRotor extends SphericalRotor {
     if (!this.isStart) return;
     this.isStart = false;
 
-    option = SphericalRotor.getDefaultStopParam(option);
+    const defaultOption = SphericalRotor.getDefaultStopParam(option);
 
     this.stopWatcher();
-    this.stop(option);
+    this.stop(defaultOption);
   }
 
   private stopWatcher(): void {
