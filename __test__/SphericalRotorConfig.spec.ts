@@ -29,9 +29,8 @@ describe("SphericalRotorConfig", () => {
   });
 
   test("extractParam", () => {
-    const config = initConfig({});
-
     const testParam = (type: SphericalParamType) => {
+      const config = initConfig({});
       const getLoopType = (type: SphericalParamType) => {
         switch (type) {
           case "phi":
@@ -51,6 +50,7 @@ describe("SphericalRotorConfig", () => {
         config[loopType].max = 1;
         config[loopType].min = 1;
       }
+
       const param = extractSphericalParam(config, type);
       expect(param).toBeTruthy();
     };
