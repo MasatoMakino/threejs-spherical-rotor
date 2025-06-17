@@ -14,8 +14,6 @@ import {
 export class AutoSphericalRotor extends SphericalRotor {
   private isStart = false;
   private loopOption?: LoopOption;
-  public static readonly DEFAULT_LOOP_LAT_DURATION = 30 * 1000;
-  public static readonly DEFAULT_LOOP_R_DURATION = 30 * 1000;
 
   constructor(
     private sleepWatcher: SleepWatcher,

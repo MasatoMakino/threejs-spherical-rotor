@@ -1,0 +1,2 @@
+export const DEFAULT_LOOP_LAT_DURATION = 30 * 1000;
+export const DEFAULT_LOOP_R_DURATION = 30 * 1000;

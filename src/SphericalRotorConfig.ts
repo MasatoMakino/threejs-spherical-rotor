@@ -1,5 +1,8 @@
 import type { SphericalParamType } from "@masatomakino/threejs-spherical-controls";
-import { AutoSphericalRotor } from "./index.js";
+import {
+  DEFAULT_LOOP_LAT_DURATION,
+  DEFAULT_LOOP_R_DURATION,
+} from "./AutoSphericalRotorConstants.js";
 
 /**
  * 回転の動作を指定する。
@@ -48,11 +51,11 @@ export function initConfig(
 ): SphericalRotorConfig {
   const result = config ? { ...config } : {};
   result.loopPhi ??= {};
-  result.loopPhi.duration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
+  result.loopPhi.duration ??= DEFAULT_LOOP_LAT_DURATION;
   result.loopTheta ??= {};
-  result.loopTheta.duration ??= AutoSphericalRotor.DEFAULT_LOOP_LAT_DURATION;
+  result.loopTheta.duration ??= DEFAULT_LOOP_LAT_DURATION;
   result.loopR ??= {};
-  result.loopR.duration ??= AutoSphericalRotor.DEFAULT_LOOP_R_DURATION;
+  result.loopR.duration ??= DEFAULT_LOOP_R_DURATION;
   return result;
 }
 
