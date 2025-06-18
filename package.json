@@ -49,6 +49,7 @@
     "test": "vitest --run",
     "test:watch": "vitest",
     "coverage": "vitest --coverage --run",
+    "lint": "npx biome check",
     "prepare": "husky",
     "preversion": "npx @masatomakino/release-helper preversion",
     "postversion": "npx @masatomakino/release-helper postversion",
@@ -71,6 +72,6 @@
     "lib": "esm"
   },
   "lint-staged": {
-    "*.{js,ts,css,md}": "npx @biomejs/biome check --write --organize-imports-enabled=false --no-errors-on-unmatched"
+    "*.{js,ts,css,md}": "npm run lint"
   }
 }
