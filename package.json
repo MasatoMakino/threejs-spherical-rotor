@@ -49,7 +49,6 @@
     "test": "vitest --run",
     "test:watch": "vitest",
     "coverage": "vitest --coverage --run",
-    "lint": "npx biome check",
     "prepare": "husky",
     "preversion": "npx @masatomakino/release-helper preversion",
     "postversion": "npx @masatomakino/release-helper postversion",
@@ -72,6 +71,6 @@
     "lib": "esm"
   },
   "lint-staged": {
-    "*.{js,ts,css,md}": "npm run lint"
+    "*.{js,ts,css,md}": "npx biome check --write"
   }
 }
