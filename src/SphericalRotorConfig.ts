@@ -5,6 +5,7 @@ export interface SphericalRotorConfig {
   /**
    * infinite horizontal rotation.
    * unit : radian / frame
+   * Note: Can be combined with loopTheta for complex theta motion
    */
   speed?: number;
 
@@ -17,6 +18,7 @@ export interface SphericalRotorConfig {
   /**
    * horizontal loop rotation.
    * range : -Math.PI ~ Math.PI
+   * Note: When used with speed, both rotations apply simultaneously
    */
   loopTheta?: LoopParameter;
 
