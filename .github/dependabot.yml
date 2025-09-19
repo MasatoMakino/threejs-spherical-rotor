@@ -9,8 +9,15 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    cooldown:
+      default-days: 5 # Supply chain attack mitigation - limit update frequency
 
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
+    cooldown:
+      default-days: 5           # General update frequency control
+      semver-major-days: 30     # Breaking changes - extended review period
+      semver-minor-days: 7      # Feature additions - moderate review period
+      semver-patch-days: 3      # Security fixes - faster but still controlled
