@@ -61,8 +61,7 @@ typings/
 .next
 *.tsbuildinfo
 .idea
-docs
-!.claude/docs
+/docs/
 lib/
 esm/
 local-notes/
