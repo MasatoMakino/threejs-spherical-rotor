@@ -33,16 +33,13 @@
   "devDependencies": {
     "@biomejs/biome": "2.1.4",
     "@masatomakino/gulptask-demo-page": "^0.10.0",
-    "@masatomakino/release-helper": "^0.2.0",
     "@masatomakino/threejs-drag-watcher": "^0.13.0",
     "@masatomakino/threejs-spherical-controls": "^0.10.1",
     "@types/three": "^0.178.0",
     "@types/webxr": "^0.5.19",
     "@vitest/coverage-istanbul": "^3.0.2",
     "browser-sync": "^3.0.2",
-    "husky": "^9.1.4",
     "jsdom": "^26.0.0",
-    "lint-staged": "^16.1.0",
     "three": "^0.178.0",
     "typedoc": "^0.28.0",
     "typescript": "^5.5.4"
@@ -51,16 +48,14 @@
     "test": "vitest --run",
     "test:watch": "vitest",
     "coverage": "vitest --coverage --run",
-    "prepare": "husky",
-    "preversion": "npx @masatomakino/release-helper preversion",
-    "postversion": "npx @masatomakino/release-helper postversion",
-    "release": "npx @masatomakino/release-helper release",
+    "pre-commit": "npx biome check --write --staged --no-errors-on-unmatched",
+    "pre-push": "npx biome ci . && npm test",
     "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
     "build": "npm run typedocs & npm run demo",
     "demo": "npm run buildTS && npx @masatomakino/gulptask-demo-page --compileModule es2020",
     "buildTS": "tsc",
     "typedocs": "npx typedoc --out ./docs/api src/index.ts",
-    "server": "npx browser-sync ./docs/demo -w",
+    "server": "npx browser-sync ./docs/demo -w --port 3000 --ui-port 3001",
     "watch:demo": "npm run demo -- -W",
     "watch:tsc": "tsc -W --incremental"
   },
@@ -71,8 +66,5 @@
   "directories": {
     "doc": "docs",
     "lib": "esm"
-  },
-  "lint-staged": {
-    "*.{js,ts,css,md}": "npx biome check --write --no-errors-on-unmatched"
   }
 }
