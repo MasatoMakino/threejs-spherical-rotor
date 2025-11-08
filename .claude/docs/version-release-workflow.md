@@ -168,7 +168,7 @@ Verification after release completion:
 - For GPG signing: Check GPG key availability with `gpg --list-secret-keys`
 - Test signing capability: `git tag -s test-tag -m "test"` then `git tag -d test-tag`
 
-### If tag creation error occurs after PR merge
+### If tag creation error occurs after the PR is merged
 - Ensure main branch is up to date
 - Pull latest changes from remote
 - Re-execute from Step 9
