@@ -62,6 +62,7 @@ typings/
 *.tsbuildinfo
 .idea
 docs
+!.claude/docs
 lib/
 esm/
 local-notes/

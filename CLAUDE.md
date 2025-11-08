@@ -98,13 +98,12 @@ Hooks are located in `.git/hooks/` and automatically start the DevContainer if i
 
 ## Release Operations
 
-Release operations are performed on the **host OS** (not in DevContainer) because they require Git access:
+Release operations follow a standardized workflow documented in `.claude/docs/version-release-workflow.md`.
 
-```bash
-# On host OS
-npx @masatomakino/release-helper preversion
-npx @masatomakino/release-helper postversion
-npx @masatomakino/release-helper release
-```
+**Key points**:
+- Version updates are performed in DevContainer: `devcontainer exec --workspace-folder . npm version [patch|minor|major] --no-git-tag-version --ignore-scripts`
+- Git operations (branching, tagging, pushing) are performed on **host OS**
+- Quality checks (lint, test, build) are executed in DevContainer before version bump
+- Signed tags are created on host OS after PR merge
 
-**Note**: `@masatomakino/release-helper` is NOT in devDependencies. It must be executed via `npx` on the host OS.
+**Refer to `.claude/docs/version-release-workflow.md` for the complete step-by-step workflow.**
