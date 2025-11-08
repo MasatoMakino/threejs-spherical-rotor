@@ -128,7 +128,7 @@ git checkout main
 git pull origin main
 ```
 
-**Checkpoint**: Switched to the latest main branch after PR merge
+**Checkpoint**: Switched to the latest up-to-date main branch after the PR is merged
 
 ### Step 10: Create Signed Tag
 
@@ -169,7 +169,7 @@ Verification after release completion:
 - Test signing capability: `git tag -s test-tag -m "test"` then `git tag -d test-tag`
 
 ### If tag creation error occurs after the PR is merged
-- Ensure main branch is up to date
+- Ensure the main branch is up-to-date
 - Pull latest changes from remote
 - Re-execute from Step 9
 
