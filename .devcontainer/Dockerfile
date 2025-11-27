@@ -1,9 +1,6 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node:22
+FROM node:22-bookworm-slim
 
-USER root
-
-# Pre-create volume mount point and set ownership to node user
-RUN mkdir -p /workspaces/threejs-spherical-rotor/node_modules && \
-    chown -R node:node /workspaces/threejs-spherical-rotor
-
-USER node
+# Install Git for Biome --staged option support
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    && rm -rf /var/lib/apt/lists/*

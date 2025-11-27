@@ -12,6 +12,36 @@ This is a TypeScript library that provides loop rotation functionality for Three
 
 All npm commands MUST be executed inside the DevContainer. Do NOT run npm commands directly on the host OS.
 
+### Architecture
+- Base image: `node:22-bookworm-slim` with Git
+- Image size: ~319MB (optimized from 1.12GB, 72% reduction)
+- Security: `--cap-drop=ALL` (removes all Linux capabilities)
+- Non-root user: `node` (UID:1000, GID:1000)
+- Port forwarding: 3000 (browser-sync), 3001 (browser-sync UI)
+
+### Security Benefits
+- Host OS npm is never executed (protection from malicious package scripts)
+- Container runs with minimal Linux capabilities (`--cap-drop=ALL`)
+- Non-root user (node) execution in container
+- Automatic `npm audit` on container start
+
+**Note on Security Trade-off:**
+Volume-based node_modules isolation was removed to restore host IDE access to TypeScript type definitions. Security now relies on container user and capability restrictions rather than volume isolation. This trade-off prioritizes developer experience (IDE type support) while maintaining npm execution isolation.
+
+### Commands NOT Used in Container
+
+```bash
+# Git operations cannot be performed in container
+# While Git is installed, the container lacks:
+# - Git authentication credentials
+# - Commit signing keys (GPG/SSH)
+# This is intentional: the container is designed for npm execution isolation only
+git commit    # ❌ No signing keys available
+git push      # ❌ No authentication credentials
+
+# Run Git operations on host OS where credentials and keys are available
+```
+
 ### Starting the DevContainer
 
 ```bash
