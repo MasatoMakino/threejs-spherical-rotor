@@ -37,7 +37,7 @@
     "@masatomakino/threejs-spherical-controls": "^0.10.1",
     "@types/three": "^0.181.0",
     "@types/webxr": "^0.5.19",
-    "@vitest/coverage-istanbul": "^3.0.2",
+    "@vitest/coverage-istanbul": "^4.0.4",
     "browser-sync": "^3.0.2",
     "jsdom": "^27.0.1",
     "three": "^0.181.0",
