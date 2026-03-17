@@ -39,7 +39,7 @@
     "@types/webxr": "^0.5.19",
     "@vitest/coverage-istanbul": "^4.0.4",
     "browser-sync": "^3.0.2",
-    "jsdom": "^27.0.1",
+    "jsdom": "^28.1.0",
     "three": "^0.183.1",
     "typedoc": "^0.28.0",
     "typescript": "^5.5.4"
